@@ -3,456 +3,793 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogeAchi.com - এক ক্লিকে সবকিছু</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <title>লগে আছি - lokeasi.com | প্রফেশনাল ই-কমার্স শপ</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            orange: '#FF6B00',
-                            dark: '#0B132B',
-                            lightBg: '#F8FAFC',
-                            accent: '#F97316'
-                        }
-                    }
-                }
+    
+    <style>
+        :root {
+            --primary-color: #000000;
+            --accent-color: #ff385c;
+            --bg-light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #717171;
+            --border-color: #e5e5e5;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        /* Top Notification Bar */
+        .top-bar {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 8px 15px;
+            width: 350px;
+        }
+
+        .search-bar-container input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--accent-color);
+            color: var(--white);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            color: var(--white);
+            padding: 60px 5%;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #ddd;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        .hero-btn {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Trust Badges Bar */
+        .trust-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .trust-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .trust-box i {
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        .trust-box h4 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .trust-box p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Container & Categories */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .cat-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* Product Grid */
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        .product-img-box {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--accent-color);
+        }
+
+        /* Cart Drawer */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f1f1f1;
+            padding-bottom: 10px;
+        }
+
+        .cart-item-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cart-item-info p {
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .remove-item {
+            color: var(--gray);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Customer Info Form inside Cart Footer */
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-light);
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .total-price-box {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp-checkout-btn {
+            width: 100%;
+            background: #25D366;
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-checkout-btn:hover {
+            background: #20ba5a;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media(max-width: 768px) {
+            .search-bar-container {
+                display: none;
+            }
+            .cart-drawer {
+                width: 100%;
+                right: -100%;
             }
         }
-    </script>
-    <style>
-        body { font-family: 'Hind Siliguri', sans-serif; }
-        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px -10px rgba(255, 107, 0, 0.25); }
-        .badge-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-orange selection:text-white">
+<body>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-brand-dark text-white text-xs py-2 px-4 border-b border-orange-500/20">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-shield-halved text-brand-orange mr-1"></i> ১০০% অরিজিনাল প্রোডাক্ট</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-truck-fast text-brand-orange mr-1"></i> ক্যাশ অন ডেলিভারি সার্ভিস</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://m.me/yourfacebookpage" target="_blank" class="hover:text-brand-orange transition flex items-center gap-1 font-semibold">
-                    <i class="fa-brands fa-facebook-messenger text-brand-orange"></i> হেল্প সেন্টার
-                </a>
-                <a href="https://wa.me/8801700000000" target="_blank" class="hover:text-green-400 transition flex items-center gap-1 font-semibold">
-                    <i class="fa-brands fa-whatsapp text-green-500"></i> হোয়াটসঅ্যাপ
-                </a>
-            </div>
-        </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        🎉 লগে আছি.com-এ স্বাগতম! বিশ্বস্ততার সাথে সেরা পণ্য কিনুন।
     </div>
 
-    <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 bg-gradient-to-tr from-brand-orange to-amber-500 rounded-2xl flex items-center justify-center font-bold text-white text-2xl shadow-md shadow-orange-500/20 group-hover:scale-105 transition">
-                    L
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black text-brand-dark tracking-tight leading-none">Loge<span class="text-brand-orange">Achi</span><span class="text-xs font-semibold text-gray-400">.com</span></h1>
-                    <p class="text-[11px] text-gray-500 font-semibold tracking-wider">এক ক্লিকে সবকিছু</p>
-                </div>
-            </a>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">লগে আছি<span>.com</span></a>
+        
+        <div class="search-bar-container">
+            <i class="fa-solid fa-magnifying-glass" style="color: var(--gray);"></i>
+            <input type="text" id="searchInput" placeholder="আপনার পছন্দের পণ্য খুঁজুন..." onkeyup="searchProducts()">
+        </div>
 
-            <!-- Search Bar -->
-            <div class="hidden md:flex flex-1 max-w-xl mx-4">
-                <div class="relative w-full">
-                    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="সানগ্লাস, পারফিউম বা প্রোডাক্ট সার্চ করুন..." class="w-full pl-5 pr-12 py-2.5 bg-gray-100 border border-transparent rounded-full focus:bg-white focus:border-brand-orange focus:outline-none text-sm transition">
-                    <button class="absolute right-1 top-1/2 -translate-y-1/2 bg-brand-orange text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-orange-600 transition shadow-sm">
-                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Header Actions -->
-            <div class="flex items-center space-x-4">
-                <button onclick="openLoginModal()" id="userAuthBtn" class="flex items-center gap-2 text-sm font-bold bg-gray-100 hover:bg-orange-50 hover:text-brand-orange px-4 py-2 rounded-full transition">
-                    <i class="fa-regular fa-circle-user text-lg text-brand-orange"></i>
-                    <span id="userName">লগইন</span>
-                </button>
-
-                <button onclick="toggleCart()" class="relative bg-brand-dark text-white p-2.5 rounded-full hover:bg-brand-orange transition shadow-md">
-                    <i class="fa-solid fa-bag-shopping text-base"></i>
-                    <span id="cartCount" class="absolute -top-1 -right-1 bg-brand-orange text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center font-bold border-2 border-white">0</span>
-                </button>
-            </div>
+        <div class="nav-icons">
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-brand-dark via-slate-900 to-brand-dark text-white py-16 px-4 mb-10 overflow-hidden">
-        <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
-        <div class="container mx-auto text-center relative z-10">
-            <span class="inline-block bg-orange-500/20 text-brand-orange border border-orange-500/30 text-xs font-bold px-4 py-1.5 rounded-full mb-4 badge-pulse">
-                🔥 সেরা ডিল ও নতুন কালেকশন
-            </span>
-            <h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight">LogeAchi.com-এ শপিং করুন <br><span class="text-brand-orange">সবচেয়ে কম দামে!</span></h2>
-            <p class="text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-8">প্রিমিয়াম সানগ্লাস, অরিজিনাল পারফিউম, ইলেকট্রনিক্স সহ ১০০+ প্রোডাক্ট এক ক্লিকে অর্ডার করুন।</p>
-            <a href="#products" class="bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold px-8 py-3.5 rounded-full shadow-lg shadow-orange-500/30 hover:scale-105 transition inline-flex items-center gap-2">
-                শপিং শুরু করুন <i class="fa-solid fa-arrow-down-long"></i>
-            </a>
-        </div>
+    <section class="hero container" style="max-width: 100%; border-radius: 0;">
+        <h1>এক্সক্লুসিভ কালেকশন এখন <span>লগে আছি</span>-এ</h1>
+        <p>সেরা মানের প্রিমিয়াম পোশাক ও স্টাইলিশ আইটেম। কার্টে যোগ করে সরাসরি WhatsApp-এ অর্ডার কনফার্ম করুন।</p>
+        <a href="#shop" class="hero-btn">কেনাকাটা শুরু করুন</a>
     </section>
 
-    <!-- Categories Navigation -->
-    <section class="container mx-auto px-4 mb-12">
-        <h3 class="text-xl font-bold mb-6 text-brand-dark border-l-4 border-brand-orange pl-3">ক্যাটাগরি সমূহ</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            <button onclick="filterCategory('all')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-border-all text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">সব আইটেম</p>
-            </button>
-            <button onclick="filterCategory('sunglass')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-glasses text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">সানগ্লাস</p>
-            </button>
-            <button onclick="filterCategory('perfume')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-spray-can text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">পারফিউম</p>
-            </button>
-            <button onclick="filterCategory('watch')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-clock text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">ঘড়ি</p>
-            </button>
-            <button onclick="filterCategory('gadget')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-mobile-screen-button text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">গ্যাজেট</p>
-            </button>
-            <button onclick="filterCategory('fashion')" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-shirt text-xl"></i>
-                </div>
-                <p class="font-bold text-xs">ফ্যাশন</p>
-            </button>
-        </div>
-    </section>
-
-    <!-- Main Products Section -->
-    <section id="products" class="container mx-auto px-4 mb-20">
-        <div class="flex justify-between items-center mb-8">
+    <!-- Trust Badges -->
+    <div class="trust-section">
+        <div class="trust-box">
+            <i class="fa-solid fa-shield-halved"></i>
             <div>
-                <h3 class="text-2xl font-bold text-brand-dark border-l-4 border-brand-orange pl-3">পছন্দের প্রোডাক্ট সমুহ</h3>
-                <p class="text-xs text-gray-500 mt-1 pl-4">আমাদের সেরা ১০০+ আইটেম থেকে নির্বাচন করুন</p>
+                <h4>১০০% বিশ্বস্ত</h4>
+                <p>যাচাইকৃত প্রিমিয়াম কোয়ালিটি</p>
             </div>
         </div>
-        
-        <!-- Dynamic Product Grid -->
-        <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            <!-- Dynamic JS Items Insertion -->
-        </div>
-    </section>
-
-    <!-- Shopping Cart Modal (Drawer) -->
-    <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
-        <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
+        <div class="trust-box">
+            <i class="fa-solid fa-truck-fast"></i>
             <div>
-                <div class="flex justify-between items-center pb-4 border-b">
-                    <h3 class="text-lg font-bold text-brand-dark flex items-center gap-2">
-                        <i class="fa-solid fa-cart-shopping text-brand-orange"></i> শপিং কার্ট
-                    </h3>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
-                </div>
-                <div id="cartItems" class="py-4 space-y-4 max-h-[65vh] overflow-y-auto">
-                    <!-- Cart List Dynamic -->
-                </div>
+                <h4>দ্রুত ডেলিভারি</h4>
+                <p>নিরাপদ হোম ডেলিভারি সিস্টেম</p>
             </div>
-            <div class="border-t pt-4">
-                <div class="flex justify-between font-bold text-lg mb-4 text-brand-dark">
-                    <span>সর্বমোট:</span>
-                    <span class="text-brand-orange">৳ <span id="cartTotal">0</span></span>
-                </div>
-                <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition">অর্ডার সম্পন্ন করুন</button>
+        </div>
+        <div class="trust-box">
+            <i class="fa-solid fa-headset"></i>
+            <div>
+                <h4>২৪/৭ সাপোর্ট</h4>
+                <p>সরাসরি WhatsApp যোগাযোগ</p>
             </div>
         </div>
     </div>
 
-    <!-- Google Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl border border-gray-100">
-            <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-gray-400 hover:text-black font-bold text-xl">&times;</button>
-            
-            <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                <i class="fa-solid fa-user-lock"></i>
+    <!-- Main Shop Section -->
+    <main class="container" id="shop">
+        <div class="section-title">প্রবণতা ও কালেকশন</div>
+
+        <!-- Categories Filter -->
+        <div class="categories">
+            <button class="cat-btn active" onclick="filterCategory('all')">সব পণ্য</button>
+            <button class="cat-btn" onclick="filterCategory('tshirt')">টি-শার্ট</button>
+            <button class="cat-btn" onclick="filterCategory('shirt')">শার্ট</button>
+            <button class="cat-btn" onclick="filterCategory('hoodie')">হুডি</button>
+            <button class="cat-btn" onclick="filterCategory('pants')">প্যান্ট</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="tshirt" data-name="প্রিমিয়াম ওভারসাইজ টি-শার্ট">
+                <span class="product-badge">২০% ছাড়</span>
+                <div class="product-img-box">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="T-Shirt">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">প্রিমিয়াম ওভারসাইজ টি-শার্ট</h3>
+                    <div class="rating"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> (4.9)</div>
+                    <div class="product-price">
+                        <span class="current-price">৳৮০০</span>
+                        <span class="old-price">৳১০০০</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('প্রিমিয়াম ওভারসাইজ টি-শার্ট', 800)">কার্টে যোগ করুন</button>
+                </div>
             </div>
-            <h3 class="text-xl font-bold text-brand-dark mb-1">স্বাগতম LogeAchi-তে!</h3>
-            <p class="text-xs text-gray-500 mb-6">আপনার অ্যাকাউন্ট কানেক্ট করে দ্রুত কেনাকাটা সম্পন্ন করুন</p>
-            
-            <button onclick="loginWithGoogle()" class="w-full border-2 border-gray-200 hover:border-brand-orange py-3 rounded-2xl flex items-center justify-center gap-3 hover:bg-orange-50/50 transition shadow-sm mb-4 group">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google">
-                <span class="text-sm font-bold text-gray-700 group-hover:text-brand-orange">Google অ্যাকাউন্ট দিয়ে লগইন</span>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="shirt" data-name="ক্লাসিক ক্যাজুয়াল শার্ট">
+                <span class="product-badge">নতুন</span>
+                <div class="product-img-box">
+                    <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500" alt="Shirt">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">ক্লাসিক ক্যাজুয়াল শার্ট</h3>
+                    <div class="rating"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star-half-stroke"></i> (4.7)</div>
+                    <div class="product-price">
+                        <span class="current-price">৳১২০০</span>
+                        <span class="old-price">৳১৫০০</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('ক্লাসিক ক্যাজুয়াল শার্ট', 1200)">কার্টে যোগ করুন</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="hoodie" data-name="স্টাইলিশ সামার হুডি">
+                <span class="product-badge">জনপ্রিয়</span>
+                <div class="product-img-box">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500" alt="Hoodie">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">স্টাইলিশ সামার হুডি</h3>
+                    <div class="rating"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> (5.0)</div>
+                    <div class="product-price">
+                        <span class="current-price">৳১৫০০</span>
+                        <span class="old-price">৳১৮০০</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('স্টাইলিশ সামার হুডি', 1500)">কার্টে যোগ করুন</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="pants" data-name="প্রিমিয়াম ডেনিম প্যান্ট">
+                <span class="product-badge">ডিসকাউন্ট</span>
+                <div class="product-img-box">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500" alt="Pants">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">প্রিমিয়াম ডেনিম প্যান্ট</h3>
+                    <div class="rating"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> (4.8)</div>
+                    <div class="product-price">
+                        <span class="current-price">৳১৭০০</span>
+                        <span class="old-price">৳২২০০</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart('প্রিমিয়াম ডেনিম প্যান্ট', 1700)">কার্টে যোগ করুন</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>আপনার শপিং কার্ট</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <p style="color: var(--gray); text-align: center; margin-top: 40px;">আপনার কার্ট খালি আছে</p>
+        </div>
+        <div class="cart-footer">
+            <div class="checkout-form">
+                <input type="text" id="custName" placeholder="আপনার নাম লিখুন *" required>
+                <input type="text" id="custPhone" placeholder="মোবাইল নম্বর লিখুন *" required>
+                <input type="text" id="custAddress" placeholder="সম্পূর্ণ ঠিকানা (রোড, এলাকা, জেলা) *" required>
+            </div>
+            <div class="total-price-box">
+                <span>মোট দাম:</span>
+                <span id="totalPrice">৳০</span>
+            </div>
+            <button class="whatsapp-checkout-btn" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> WhatsApp-এ অর্ডার কনফার্ম করুন
             </button>
-            <p class="text-[10px] text-gray-400">লগইন করার মাধ্যমে আপনি আমাদের শর্তাবলীতে সম্মত হচ্ছেন।</p>
         </div>
     </div>
 
-    <!-- Checkout Modal -->
-    <div id="checkoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 my-8 shadow-2xl relative">
-            <div class="flex justify-between items-center mb-6 border-b pb-3">
-                <h3 class="text-xl font-bold text-brand-dark">অর্ডারের তথ্য দিন</h3>
-                <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-black text-xl">&times;</button>
-            </div>
-
-            <form id="checkoutForm" onsubmit="handleCheckout(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold mb-1 text-gray-600">আপনার নাম *</label>
-                    <input type="text" id="custName" required placeholder="উদাহরণ: মোহাম্মদ রাজু" class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1 text-gray-600">মোবাইল নাম্বার *</label>
-                    <input type="tel" id="custPhone" required placeholder="017XXXXXXXX" class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
-                </div>
-                
-                <!-- Bangladesh Delivery Location Selection -->
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold mb-1 text-gray-600">জেলা (District)</label>
-                        <select required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
-                            <option value="">জেলা সিলেক্ট করুন</option>
-                            <option>ঢাকা</option>
-                            <option>চট্টগ্রাম</option>
-                            <option>সিলেট</option>
-                            <option>রাজশাহী</option>
-                            <option>খুলনা</option>
-                            <option>বরিশাল</option>
-                            <option>রংপুর</option>
-                            <option>ময়মনসিংহ</option>
-                            <option>নোয়াখালী</option>
-                            <option>কুমিল্লা</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold mb-1 text-gray-600">ডেলিভারি এরিয়া</label>
-                        <select required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
-                            <option value="60">ঢাকার ভেতরে (৳৬০)</option>
-                            <option value="120">ঢাকার বাইরে (৳১২০)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1 text-gray-600">সম্পূর্ণ ঠিকানা</label>
-                    <textarea required placeholder="গ্রাম/রাস্তা, থানা, হাউজ নম্বর..." class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none" rows="2"></textarea>
-                </div>
-
-                <!-- Payment Methods Section -->
-                <div>
-                    <label class="block text-xs font-bold mb-2 text-gray-600">পেমেন্ট মেথড নির্বাচন করুন</label>
-                    <div class="grid grid-cols-3 gap-3">
-                        <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="bkash" checked class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-pink-600">bKash</span>
-                        </label>
-                        <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="nagad" class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-orange-600">Nagad</span>
-                        </label>
-                        <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="cod" class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-gray-700">ক্যাশ অন ডেলিভারি</span>
-                        </label>
-                    </div>
-                </div>
-
-                <button type="submit" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition">অর্ডার কনফার্ম করুন</button>
-            </form>
-        </div>
-    </div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-12 pb-6 border-t-4 border-brand-orange">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-                <h2 class="text-2xl font-black mb-3">Loge<span class="text-brand-orange">Achi</span>.com</h2>
-                <p class="text-xs text-gray-400 leading-relaxed">আপনার বিশ্বস্ত ই-কমার্স কেনাকাটার প্ল্যাটফর্ম। আমরা সর্বোচ্চ গুণগত মান এবং দ্রুততম সময়ে ডেলিভারি নিশ্চিত করি।</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-sm mb-3 text-brand-orange">হেল্প ও সাপোর্ট</h4>
-                <ul class="space-y-2 text-xs text-gray-300">
-                    <li><a href="https://m.me/yourfacebookpage" target="_blank" class="hover:text-brand-orange transition flex items-center gap-2"><i class="fa-brands fa-facebook"></i> ফেসবুক মেসেঞ্জার পেজ</a></li>
-                    <li><a href="https://wa.me/8801700000000" target="_blank" class="hover:text-brand-orange transition flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400"></i> হোয়াটসঅ্যাপ সাপোর্ট</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-sm mb-3 text-brand-orange">সুরক্ষিত পেমেন্ট অপশন</h4>
-                <p class="text-xs text-gray-400 mb-3">বিকাশ, নগদ, রকেট অথবা পণ্য হাতে পেয়ে মূল্য পরিশোধের সুবিধা।</p>
-            </div>
-        </div>
-        <div class="text-center text-xs text-gray-500 border-t border-gray-800 pt-6">
-            &copy; 2026 LogeAchi.com | সর্বস্বত্ব সংরক্ষিত।
-        </div>
+    <footer>
+        <p>© ২০২৬ lokeasi.com (লগে আছি.com) | সর্বস্বত্ব সংরক্ষিত</p>
+        <p>আমাদের অফিসিয়াল ফেসবুক পেজ: <a href="https://facebook.com/logeachidotcom781" target="_blank">facebook.com/logeachidotcom781</a></p>
     </footer>
 
-    <!-- JavaScript Data and Interactivity -->
+    <!-- JavaScript System -->
     <script>
-        const categories = ['sunglass', 'perfume', 'watch', 'gadget', 'fashion'];
-        const sampleProducts = [];
-
-        // Generating 100+ items dynamic array
-        for (let i = 1; i <= 100; i++) {
-            let cat = categories[i % categories.length];
-            let title = "";
-            let img = "";
-            let price = Math.floor(Math.random() * 1500) + 400;
-
-            if (cat === 'sunglass') {
-                title = `স্টাইলিশ UV সানগ্লাস V-${i}`;
-                img = "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400";
-            } else if (cat === 'perfume') {
-                title = `প্রিমিয়াম লং-লাস্টিং পারফিউম #${i}`;
-                img = "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400";
-            } else if (cat === 'watch') {
-                title = `স্মার্ট অ্যান্ড ক্লাসিক ওয়াচ ${i}`;
-                img = "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400";
-            } else if (cat === 'gadget') {
-                title = `ওয়ারলেস গ্যাজেট আইটেম Mod-${i}`;
-                img = "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400";
-            } else {
-                title = `ট্রেন্ডি মেনস ক্যাজুয়াল ফ্যাশন ${i}`;
-                img = "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400";
-            }
-
-            sampleProducts.push({ id: i, title: title, category: cat, price: price, image: img });
-        }
-
         let cart = [];
-
-        function renderProducts(items) {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
-            
-            items.forEach(product => {
-                grid.innerHTML += `
-                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
-                        <div class="relative overflow-hidden rounded-xl mb-3">
-                            <img src="${product.image}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl">
-                            <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/80 backdrop-blur-md text-white px-2 py-0.5 rounded-full font-bold uppercase">${product.category}</span>
-                        </div>
-                        <div class="flex-1 flex flex-col justify-between">
-                            <div>
-                                <h4 class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1">${product.title}</h4>
-                            </div>
-                            <div class="mt-2">
-                                <p class="text-brand-orange font-black text-sm md:text-base mb-2">৳ ${product.price}</p>
-                                <button onclick="addToCart(${product.id})" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-                                    <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        renderProducts(sampleProducts);
-
-        function filterCategory(category) {
-            if (category === 'all') {
-                renderProducts(sampleProducts);
-            } else {
-                renderProducts(sampleProducts.filter(p => p.category === category));
-            }
-        }
-
-        function filterProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            renderProducts(sampleProducts.filter(p => p.title.toLowerCase().includes(query)));
-        }
+        const adminWhatsAppNumber = "966579516277";
 
         function toggleCart() {
-            document.getElementById('cartModal').classList.toggle('hidden');
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('overlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
         }
 
-        function addToCart(id) {
-            const item = sampleProducts.find(p => p.id === id);
-            cart.push(item);
-            updateCart();
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
             toggleCart();
-        }
-
-        function updateCart() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const cartItems = document.getElementById('cartItems');
-            let total = 0;
-
-            if(cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-gray-400 text-center text-xs py-8">আপনার কার্ট ফাঁকা রয়েছে!</p>';
-            } else {
-                cartItems.innerHTML = '';
-                cart.forEach((item, index) => {
-                    total += item.price;
-                    cartItems.innerHTML += `
-                        <div class="flex justify-between items-center border-b pb-3">
-                            <div class="flex items-center gap-3">
-                                <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
-                                <div>
-                                    <h5 class="text-xs font-bold text-gray-800 line-clamp-1">${item.title}</h5>
-                                    <p class="text-xs text-brand-orange font-bold">৳ ${item.price}</p>
-                                </div>
-                            </div>
-                            <button onclick="removeFromCart(${index})" class="text-gray-300 hover:text-red-500 text-sm p-1"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    `;
-                });
-            }
-            document.getElementById('cartTotal').innerText = total;
         }
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            updateCart();
+            updateCartUI();
         }
 
-        function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
-        function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
+        function updateCartUI() {
+            const cartBody = document.getElementById('cartBody');
+            const cartCount = document.getElementById('cartCount');
+            const totalPriceElem = document.getElementById('totalPrice');
 
-        function loginWithGoogle() {
-            document.getElementById('userName').innerText = "অ্যাকাউন্ট";
-            closeLoginModal();
-            alert("Google অ্যাকাউন্টের মাধ্যমে সফলভাবে সাইন ইন করা হয়েছে!");
-        }
+            cartCount.innerText = cart.length;
 
-        function openCheckoutModal() {
-            if(cart.length === 0) {
-                alert("আপনার কার্টে কোনো প্রোডাক্ট নেই!");
+            if (cart.length === 0) {
+                cartBody.innerHTML = `<p style="color: var(--gray); text-align: center; margin-top: 40px;">আপনার কার্ট খালি আছে</p>`;
+                totalPriceElem.innerText = `৳০`;
                 return;
             }
-            toggleCart();
-            document.getElementById('checkoutModal').classList.remove('hidden');
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>৳${item.price}</p>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+
+            cartBody.innerHTML = html;
+            totalPriceElem.innerText = `৳${total}`;
         }
 
-        function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("আপনার কার্ট খালি! অনুগ্রহ করে প্রথমে কিছু আইটেম যোগ করুন।");
+                return;
+            }
 
-        function handleCheckout(e) {
-            e.preventDefault();
-            alert("আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে! খুব শীঘ্রই আপনার ঠিকানায় প্রতিনিধি যোগাযোগ করবেন।");
-            cart = [];
-            updateCart();
-            closeCheckoutModal();
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+
+            if (!name || !phone || !address) {
+                alert("দয়া করে অর্ডার কনফার্ম করার আগে আপনার নাম, মোবাইল নম্বর এবং ঠিকানা পূরণ করুন।");
+                return;
+            }
+
+            let message = `🛒 *নতুন অর্ডার এসেছে (lokeasi.com)* %0A%0A`;
+            message += `👤 নাম: ${name}%0A`;
+            message += `📞 ফোন: ${phone}%0A`;
+            message += `📍 ঠিকানা: ${address}%0A%0A`;
+            message += `📦 *পণ্যের তালিকা:*%0A`;
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name} - ৳${item.price}%0A`;
+                total += item.price;
+            });
+
+            message += `%0A💰 *মোট মূল্য: ৳${total}*%0A%0Aদয়া করে কল দিয়ে অর্ডারটি কনফার্ম করুন।`;
+
+            const whatsappURL = `https://wa.me/${adminWhatsAppNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Category Filter Function
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Search Function
+        function searchProducts() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
