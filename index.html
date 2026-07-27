@@ -185,21 +185,21 @@
     <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
         <div class="max-w-2xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
             
-            <!-- Step 1: Secret Login Gate -->
+            <!-- Step 1: Secret Login Gate (Blank inputs with no placeholder hints) -->
             <div id="adminLoginGate" class="text-center py-6">
                 <div class="w-14 h-14 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <h3 class="text-lg font-bold text-brand-dark mb-1">অ্যাডমিন ভেরিফিকেশন</h3>
-                <p class="text-xs text-gray-500 mb-6">আপনার সিক্রেট ইমেইল ও পাসওয়ার্ড প্রদান করুন</p>
+                <p class="text-xs text-gray-500 mb-6">আপনার সিক্রেট তথ্য প্রদান করুন</p>
                 <div class="space-y-3 max-w-sm mx-auto text-left">
                     <div>
                         <label class="block text-[11px] font-bold text-gray-600 mb-1">অ্যাডমিন ইমেইল</label>
-                        <input type="email" id="adminEmailInput" placeholder="Tanvverevan781@gmail.com" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <input type="email" id="adminEmailInput" autocomplete="off" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-gray-600 mb-1">পাসওয়ার্ড</label>
-                        <input type="password" id="adminPasswordInput" placeholder="••••••••" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <input type="password" id="adminPasswordInput" autocomplete="new-password" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                     </div>
                     <button onclick="verifyAdminLogin()" class="w-full bg-brand-dark hover:bg-brand-orange text-white py-3 rounded-xl font-bold text-sm transition shadow-md mt-2">
                         লগইন করুন
@@ -470,7 +470,6 @@
         }
         setInterval(showNextSlide, 1000);
 
-        // Default Categories
         let defaultCategories = [
             { id: 'sunglass', name: 'সানগ্লাস', icon: 'fa-glasses' },
             { id: 'perfume', name: 'পারফিউম', icon: 'fa-spray-can' },
@@ -495,8 +494,9 @@
         let cart = [];
         let loggedInUser = localStorage.getItem('siteLoggedInUser') ? JSON.parse(localStorage.getItem('siteLoggedInUser')) : null;
 
+        // নতুন এবং গোপন অ্যাডমিন ক্রেডেনশিয়াল
         const MY_ADMIN_EMAIL = "Tanvverevan781@gmail.com";
-        const MY_ADMIN_PASS = "logeachi.com781781";
+        const MY_ADMIN_PASS = "Tanvir@781#";
 
         window.onload = function() {
             loadSavedSiteSettings();
@@ -604,10 +604,10 @@
         }
 
         function verifyAdminLogin() {
-            const enteredEmail = document.getElementById('adminEmailInput').value.trim();
+            const enteredEmail = document.getElementById('adminEmailInput').value.trim().toLowerCase();
             const enteredPass = document.getElementById('adminPasswordInput').value.trim();
 
-            if (enteredEmail === MY_ADMIN_EMAIL && enteredPass === MY_ADMIN_PASS) {
+            if (enteredEmail === MY_ADMIN_EMAIL.toLowerCase() && enteredPass === MY_ADMIN_PASS) {
                 localStorage.setItem('isSecretAdminLoggedIn', 'true');
                 showAdminUploadPanel();
             } else {
@@ -1021,7 +1021,7 @@
                                     `👤 *কাস্টমারের নাম:* ${name}%0A` +
                                     `📞 *ফোন নাম্বার:* ${phone}%0A` +
                                     `📍 *জেলা:* ঠিকানার তথ্য... (${district})%0A` +
-                                    `🏠 *সম্পূর্ণ ঠিকানা:* ${address}%0A` +
+                                    `🏠 *সম্পূর্ণ ঠিকানা:* ঠিকানাসমূহ...%0A` +
                                     `💳 *পেমেন্ট পদ্ধতি:* ${paymentMethod}%0A%0A` +
                                     `দয়া করে অর্ডারটি কনফার্ম করুন।`;
 
