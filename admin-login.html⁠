@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লগে আছি.com - অ্যাডমিন লগইন</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Firebase Core & Auth CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+
+    <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-96 border border-gray-700">
+        <h2 class="text-2xl font-bold mb-6 text-center text-orange-500">লগে আছি.com প্রশাসন</h2>
+        
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2">অ্যাডমিন ইমেইল</label>
+            <input type="email" id="adminEmail" placeholder="admin@lokeasi.com" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-orange-500">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">পাসওয়ার্ড</label>
+            <input type="password" id="adminPassword" placeholder="••••••••" class="w-full p-3 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-orange-500">
+        </div>
+
+        <button onclick="adminLogin()" class="w-full bg-orange-500 hover:bg-orange-600 text-white p-3 rounded font-bold transition duration-200">লগইন করুন</button>
+        
+        <p id="errorMsg" class="text-red-500 text-sm mt-4 text-center"></p>
+    </div>
+
+    <!-- Firebase Configuration & Login Script -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBS9G_13sh@JHthzocADDTMvVqk",
+        authDomain: "logeachidotcom-f4e1e.firebaseapp.com",
+        projectId: "logeachidotcom-f4e1e",
+        storageBucket: "logeachidotcom-f4e1e.firebasestorage.app",
+        messagingSenderId: "1060734330563",
+        appId: "1:1060734330563:web:94ef66dabe99a",
+        measurementId: "G-N7QJZ923L8"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      function adminLogin() {
+        const email = document.getElementById('adminEmail').value;
+        const password = document.getElementById('adminPassword').value;
+        const errorMsg = document.getElementById('errorMsg');
+
+        auth.signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            alert("লগইন সফল হয়েছে!");
+            // সফলভাবে লগইন হওয়ার পর ড্যাশবোর্ড পেজে পাঠিয়ে দেওয়া হবে
+            window.location.href = "admin-dashboard.html";
+          })
+          .catch((error) => {
+            errorMsg.innerText = "লগইন ব্যর্থ হয়েছে: ইমেইল বা পাসওয়ার্ড ভুল!";
+          });
+      }
+    </script>
+</body>
+</html>
