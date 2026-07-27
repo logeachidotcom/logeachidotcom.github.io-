@@ -1,36 +1,11 @@
 <!DOCTYPE html>
 <html lang="bn" class="scroll-smooth">
 <head>
-    <!-- Firebase App (core) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<!-- Firebase Firestore (Database) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBS9G_13sh@JHthzocADDTMvVqk",
-    authDomain: "logeachidotcom-f4e1e.firebaseapp.com",
-    projectId: "logeachidotcom-f4e1e",
-    storageBucket: "logeachidotcom-f4e1e.firebasestorage.app",
-    messagingSenderId: "1060734330563",
-    appId: "1:1060734330563:web:94ef66dabe99a",
-    measurementId: "G-N7QJZ923L8"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  console.log("Firebase Connected Successfully!");
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogeAchi.com - এক ক্লিকে সবকিছু</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -55,16 +30,13 @@
         .badge-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
         
-        /* Fixed Aspect Ratio Slider for Uniform Image Sizes */
         .slider-container {
             position: relative;
             width: 100%;
             height: 190px;
         }
         @media (min-width: 768px) {
-            .slider-container {
-                height: 250px;
-            }
+            .slider-container { height: 250px; }
         }
         .slide-item {
             position: absolute;
@@ -84,7 +56,6 @@
             border-radius: 0.75rem;
         }
 
-        /* Medium & Smooth Delivery Bike Animation Below Slider */
         @keyframes rideBikeCenter {
             0% { transform: translateX(-100px); opacity: 0; }
             15% { opacity: 1; }
@@ -98,7 +69,6 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-orange selection:text-white">
 
-    <!-- Top Announcement Bar -->
     <div class="bg-brand-dark text-white text-xs py-2 px-4 border-b border-orange-500/20">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
@@ -116,10 +86,8 @@
         </div>
     </div>
 
-    <!-- Header / Navbar -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden shadow-md shadow-orange-500/25 group-hover:scale-105 transition bg-white border border-gray-100 p-1">
                     <img src="https://i.ibb.co/Y7RJwCJZ/IMG-0240.png" alt="LogeAchi Logo" class="w-full h-full object-contain">
@@ -130,7 +98,6 @@
                 </div>
             </a>
 
-            <!-- Search Bar -->
             <div class="hidden md:flex flex-1 max-w-xl mx-4">
                 <div class="relative w-full">
                     <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="সানগ্লাস, পারফিউম বা প্রোডাক্ট সার্চ করুন..." class="w-full pl-5 pr-12 py-2.5 bg-gray-100 border border-transparent rounded-full focus:bg-white focus:border-brand-orange focus:outline-none text-sm transition">
@@ -140,7 +107,6 @@
                 </div>
             </div>
 
-            <!-- Header Actions -->
             <div class="flex items-center space-x-4">
                 <button onclick="openLoginModal()" id="userAuthBtn" class="flex items-center gap-2 text-sm font-bold bg-gray-100 hover:bg-orange-50 hover:text-brand-orange px-4 py-2 rounded-full transition">
                     <i class="fa-regular fa-circle-user text-lg text-brand-orange"></i>
@@ -154,38 +120,21 @@
         </div>
     </header>
 
-    <!-- Hero Section: Clear Slider Images + Delivery Bike & Cash on Delivery Badge Below Slider -->
     <section class="bg-gradient-to-b from-brand-dark via-slate-900 to-brand-dark text-white py-8 md:py-12 px-4 mb-12 overflow-hidden relative">
         <div class="container mx-auto max-w-3xl text-center">
-            
-            <!-- Banner Box with Clean Slider Images -->
             <div class="flex flex-col items-center justify-center mb-4">
                 <div class="relative group w-full max-w-lg">
                     <div class="absolute -inset-2 bg-gradient-to-r from-brand-orange via-amber-500 to-orange-600 rounded-3xl blur-md opacity-40 group-hover:opacity-70 transition duration-500"></div>
-                    
                     <div class="relative bg-brand-dark/90 rounded-2xl overflow-hidden border border-orange-500/40 shadow-2xl p-3 w-full">
-                        
-                        <!-- Fixed Size Slider Container -->
                         <div class="slider-container rounded-xl overflow-hidden relative">
-                            <!-- Slide 1 (মূল ছবি) -->
-                            <div class="slide-item active">
-                                <img src="https://i.ibb.co/gZLXJCYn/photo-output.png" alt="Banner 1">
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="slide-item">
-                                <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=800" alt="Banner 2">
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="slide-item">
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Banner 3">
-                            </div>
+                            <div class="slide-item active"><img src="https://i.ibb.co/gZLXJCYn/photo-output.png" alt="Banner 1"></div>
+                            <div class="slide-item"><img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=800" alt="Banner 2"></div>
+                            <div class="slide-item"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Banner 3"></div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <!-- Delivery Bike & Cash on Delivery Info Bar (Placed Cleanly Below the Images) -->
             <div class="max-w-lg mx-auto mb-6">
                 <div class="bg-gradient-to-r from-slate-900 via-gray-900 to-slate-900 border border-orange-500/40 rounded-xl py-2.5 px-4 shadow-lg flex items-center justify-center gap-3 overflow-hidden">
                     <div class="animate-bike-medium flex items-center gap-2 text-xs md:text-sm font-bold text-white">
@@ -195,7 +144,6 @@
                 </div>
             </div>
 
-            <!-- Texts and Action Button -->
             <div class="max-w-xl mx-auto">
                 <span class="inline-block bg-white/10 text-brand-orange border border-orange-500/20 text-[11px] font-bold px-3 py-1 rounded-full mb-3 badge-pulse backdrop-blur-sm">
                     🔥 সেরা ডিল ও এক্সক্লুসিভ কালেকশন
@@ -206,65 +154,47 @@
                 <p class="text-xs md:text-sm text-gray-300 mb-6 leading-relaxed">
                     প্রিমিয়াম সানগ্লাস, অরিজিনাল পারফিউম, জামা-কাপড় ও গ্যাজেট অর্ডার করুন এক ক্লিকে। শতভাগ ক্যাশ অন ডেলিভারি গ্যারান্টি।
                 </p>
-                <div>
-                    <a href="#sunglass-section" class="bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold text-xs md:text-sm px-6 py-3 rounded-full shadow-lg shadow-orange-500/30 hover:scale-105 transition inline-flex items-center gap-2">
+                <div class="flex justify-center">
+                    <a href="#sunglass-section" class="bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold text-xs md:text-sm px-8 py-3 rounded-full shadow-lg shadow-orange-500/30 hover:scale-105 transition inline-flex items-center gap-2">
                         শপিং শুরু করুন <i class="fa-solid fa-arrow-down-long text-xs"></i>
                     </a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Categories Shortcut Navigation -->
     <section class="container mx-auto px-4 mb-12">
         <h3 class="text-xl font-bold mb-6 text-brand-dark border-l-4 border-brand-orange pl-3">ক্যাটাগরি সমূহ</h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             <a href="#sunglass-section" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-glasses text-xl"></i>
-                </div>
+                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition"><i class="fa-solid fa-glasses text-xl"></i></div>
                 <p class="font-bold text-xs">সানগ্লাস</p>
             </a>
             <a href="#perfume-section" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-spray-can text-xl"></i>
-                </div>
+                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition"><i class="fa-solid fa-spray-can text-xl"></i></div>
                 <p class="font-bold text-xs">পারফিউম</p>
             </a>
             <a href="#watch-section" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-clock text-xl"></i>
-                </div>
+                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition"><i class="fa-solid fa-clock text-xl"></i></div>
                 <p class="font-bold text-xs">ঘড়ি</p>
             </a>
             <a href="#gadget-section" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-mobile-screen-button text-xl"></i>
-                </div>
+                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition"><i class="fa-solid fa-mobile-screen-button text-xl"></i></div>
                 <p class="font-bold text-xs">গ্যাজেট</p>
             </a>
             <a href="#fashion-section" class="bg-white p-4 rounded-2xl shadow-sm text-center border border-gray-100 hover:border-brand-orange hover:shadow-md transition group col-span-2 sm:col-span-1">
-                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition">
-                    <i class="fa-solid fa-shirt text-xl"></i>
-                </div>
+                <div class="w-12 h-12 mx-auto mb-2 bg-orange-50 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition"><i class="fa-solid fa-shirt text-xl"></i></div>
                 <p class="font-bold text-xs">জামা ও ফ্যাশন</p>
             </a>
         </div>
     </section>
 
-    <!-- Main Products Separated Sections -->
     <main class="container mx-auto px-4 mb-20 space-y-16">
         <section id="sunglass-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center">
-                        <i class="fa-solid fa-glasses"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark">প্রিমিয়াম সানগ্লাস কালেকশন</h3>
-                        <p class="text-xs text-gray-500">সেরা ডিজাইনের স্টাইলিশ ইউভি প্রোটেক্টেড সানগ্লাস</p>
-                    </div>
+                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-glasses"></i></div>
+                    <div><h3 class="text-xl font-bold text-brand-dark">প্রিমিয়াম সানগ্লাস কালেকশন</h3><p class="text-xs text-gray-500">সেরা ডিজাইনের স্টাইলিশ ইউভি প্রোটেক্টেড সানগ্লাস</p></div>
                 </div>
             </div>
             <div id="grid-sunglass" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
@@ -273,13 +203,8 @@
         <section id="perfume-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center">
-                        <i class="fa-solid fa-spray-can"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark">অরিজিনাল পারফিউম কালেকশন</h3>
-                        <p class="text-xs text-gray-500">দীর্ঘস্থায়ী সুবাসের এক্সক্লুসিভ পারফিউম</p>
-                    </div>
+                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-spray-can"></i></div>
+                    <div><h3 class="text-xl font-bold text-brand-dark">অরিজিনাল পারফিউম কালেকশন</h3><p class="text-xs text-gray-500">দীর্ঘস্থায়ী সুবাসের এক্সক্লুসিভ পারফিউম</p></div>
                 </div>
             </div>
             <div id="grid-perfume" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
@@ -288,13 +213,8 @@
         <section id="watch-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark">স্টাইলিশ ঘড়ি কালেকশন</h3>
-                        <p class="text-xs text-gray-500">স্মার্ট এবং ক্লাসিক ঘড়ির সমাহার</p>
-                    </div>
+                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-clock"></i></div>
+                    <div><h3 class="text-xl font-bold text-brand-dark">স্টাইলিশ ঘড়ি কালেকশন</h3><p class="text-xs text-gray-500">স্মার্ট এবং ক্লাসিক ঘড়ির সমাহার</p></div>
                 </div>
             </div>
             <div id="grid-watch" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
@@ -303,13 +223,8 @@
         <section id="gadget-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark">আধুনিক গ্যাজেট আইটেম</h3>
-                        <p class="text-xs text-gray-500">দরকারী সব ওয়ারলেস ও ইলেকট্রনিক গ্যাজেট</p>
-                    </div>
+                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <div><h3 class="text-xl font-bold text-brand-dark">আধুনিক গ্যাজেট আইটেম</h3><p class="text-xs text-gray-500">দরকারী সব ওয়ারলেস ও ইলেকট্রনিক গ্যাজেট</p></div>
                 </div>
             </div>
             <div id="grid-gadget" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
@@ -318,27 +233,92 @@
         <section id="fashion-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-dark">জামা ও ফ্যাশন কালেকশন</h3>
-                        <p class="text-xs text-gray-500">ট্রেন্ডি এবং আরামদায়ক পোশাক ও ক্যাজুয়াল ফ্যাশন</p>
-                    </div>
+                    <div class="w-10 h-10 bg-brand-orange text-white rounded-xl flex items-center justify-center"><i class="fa-solid fa-shirt"></i></div>
+                    <div><h3 class="text-xl font-bold text-brand-dark">জামা ও ফ্যাশন কালেকশন</h3><p class="text-xs text-gray-500">ট্রেন্ডি এবং আরামদায়ক পোশাক ও ক্যাজুয়াল ফ্যাশন</p></div>
                 </div>
             </div>
             <div id="grid-fashion" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
         </section>
     </main>
 
-    <!-- Shopping Cart Modal -->
+    <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
+        <div class="max-w-xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
+            
+            <div id="adminLoginGate" class="text-center py-6">
+                <div class="w-14 h-14 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="text-lg font-bold text-brand-dark mb-1">অ্যাডমিন ভেরিফিকেশন</h3>
+                <p class="text-xs text-gray-500 mb-6">আপনার সিক্রেট ইমেইল ও পাসওয়ার্ড প্রদান করুন</p>
+                <div class="space-y-3 max-w-sm mx-auto text-left">
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-600 mb-1">অ্যাডমিন ইমেইল</label>
+                        <input type="email" id="adminEmailInput" placeholder="Tanvverevan781@gmail.com" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-600 mb-1">পাসওয়ার্ড</label>
+                        <input type="password" id="adminPasswordInput" placeholder="••••••••" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                    </div>
+                    <button onclick="verifyAdminLogin()" class="w-full bg-brand-dark hover:bg-brand-orange text-white py-3 rounded-xl font-bold text-sm transition shadow-md mt-2">
+                        লগইন করুন
+                    </button>
+                </div>
+            </div>
+
+            <div id="adminPanelContent" class="hidden">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-brand-dark">প্রোডাক্ট আপলোড প্যানেল</h3>
+                            <p class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> সফলভাবে লগইন করা হয়েছে</p>
+                        </div>
+                    </div>
+                    <button onclick="hideAdminPanel()" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition">বন্ধ করুন</button>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold mb-1 text-gray-600">প্রোডাক্টের নাম *</label>
+                        <input type="text" id="adminProductName" placeholder="যেমন: প্রিমিয়াম সানগ্লাস" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-gray-600">মূল্য (টাকা) *</label>
+                            <input type="number" id="adminProductPrice" placeholder="যেমন: ৭৫০" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1 text-gray-600">ক্যাটাগরি সিলেক্ট করুন *</label>
+                            <select id="adminProductCategory" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                                <option value="sunglass">সানগ্লাস</option>
+                                <option value="perfume">পারফিউম</option>
+                                <option value="watch">ঘড়ি</option>
+                                <option value="gadget">গ্যাজেট</option>
+                                <option value="fashion">জামা ও ফ্যাশন</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1 text-gray-600">ছবির ফাইল সিলেক্ট করুন *</label>
+                        <input type="file" id="adminProductImage" accept="image/*" onchange="previewAdminFile()" class="w-full border border-gray-200 p-2.5 rounded-xl text-sm bg-gray-50">
+                        <img id="adminImagePreview" class="w-full h-36 object-contain mt-3 rounded-xl border border-dashed border-gray-300 hidden" alt="প্রিভিউ">
+                    </div>
+                    <button onclick="addNewProductToSite()" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition">
+                        প্রোডাক্ট ওয়েবসাইটে পাবলিশ করুন
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
         <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
             <div>
                 <div class="flex justify-between items-center pb-4 border-b">
-                    <h3 class="text-lg font-bold text-brand-dark flex items-center gap-2">
-                        <i class="fa-solid fa-cart-shopping text-brand-orange"></i> শপিং কার্ট
-                    </h3>
+                    <h3 class="text-lg font-bold text-brand-dark flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-brand-orange"></i> শপিং কার্ট</h3>
                     <button onclick="toggleCart()" class="text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
                 </div>
                 <div id="cartItems" class="py-4 space-y-4 max-h-[65vh] overflow-y-auto"></div>
@@ -353,13 +333,10 @@
         </div>
     </div>
 
-    <!-- Google Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl border border-gray-100">
             <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-gray-400 hover:text-black font-bold text-xl">&times;</button>
-            <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                <i class="fa-solid fa-user-lock"></i>
-            </div>
+            <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-4 text-2xl"><i class="fa-solid fa-user-lock"></i></div>
             <h3 class="text-xl font-bold text-brand-dark mb-1">স্বাগতম LogeAchi-তে!</h3>
             <p class="text-xs text-gray-500 mb-6">আপনার অ্যাকাউন্ট কানেক্ট করে দ্রুত কেনাকাটা সম্পন্ন করুন</p>
             <button onclick="loginWithGoogle()" class="w-full border-2 border-gray-200 hover:border-brand-orange py-3 rounded-2xl flex items-center justify-center gap-3 hover:bg-orange-50/50 transition shadow-sm mb-4 group">
@@ -370,7 +347,6 @@
         </div>
     </div>
 
-    <!-- Checkout Modal -->
     <div id="checkoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 my-8 shadow-2xl relative">
             <div class="flex justify-between items-center mb-6 border-b pb-3">
@@ -391,16 +367,7 @@
                         <label class="block text-xs font-bold mb-1 text-gray-600">জেলা (District)</label>
                         <select required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                             <option value="">জেলা সিলেক্ট করুন</option>
-                            <option>ঢাকা</option>
-                            <option>চট্টগ্রাম</option>
-                            <option>সিলেট</option>
-                            <option>রাজশাহী</option>
-                            <option>খুলনা</option>
-                            <option>বরিশাল</option>
-                            <option>রংপুর</option>
-                            <option>ময়মনসিংহ</option>
-                            <option>নোয়াখালী</option>
-                            <option>কুমিল্লা</option>
+                            <option>ঢাকা</option><option>চট্টগ্রাম</option><option>সিলেট</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>রংপুর</option><option>ময়মনসিংহ</option><option>নোয়াখালী</option><option>কুমিল্লা</option>
                         </select>
                     </div>
                     <div>
@@ -419,16 +386,13 @@
                     <label class="block text-xs font-bold mb-2 text-gray-600">পেমেন্ট মেথড নির্বাচন করুন</label>
                     <div class="grid grid-cols-3 gap-3">
                         <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="bkash" checked class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-pink-600">bKash</span>
+                            <input type="radio" name="payment" value="bkash" checked class="mb-1 text-brand-orange"><span class="text-xs font-bold text-pink-600">bKash</span>
                         </label>
                         <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="nagad" class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-orange-600">Nagad</span>
+                            <input type="radio" name="payment" value="nagad" class="mb-1 text-brand-orange"><span class="text-xs font-bold text-orange-600">Nagad</span>
                         </label>
                         <label class="border-2 border-gray-100 p-3 rounded-2xl flex flex-col items-center cursor-pointer hover:border-brand-orange transition">
-                            <input type="radio" name="payment" value="cod" class="mb-1 text-brand-orange">
-                            <span class="text-xs font-bold text-gray-700">ক্যাশ অন ডেলিভারি</span>
+                            <input type="radio" name="payment" value="cod" class="mb-1 text-brand-orange"><span class="text-xs font-bold text-gray-700">ক্যাশ অন ডেলিভারি</span>
                         </label>
                     </div>
                 </div>
@@ -437,14 +401,11 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-12 pb-6 border-t-4 border-brand-orange">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center">
-                        <img src="https://i.ibb.co/Y7RJwCJZ/IMG-0240.png" alt="LogeAchi Logo" class="w-full h-full object-contain">
-                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center"><img src="https://i.ibb.co/Y7RJwCJZ/IMG-0240.png" alt="LogeAchi Logo" class="w-full h-full object-contain"></div>
                     <h2 class="text-2xl font-black">Loge<span class="text-brand-orange">Achi</span>.com</h2>
                 </div>
                 <p class="text-xs text-gray-400 leading-relaxed">আপনার বিশ্বস্ত ই-কমার্স কেনাকাটার প্ল্যাটফর্ম। আমরা সর্বোচ্চ গুণগত মান এবং দ্রুততম সময়ে ডেলিভারি নিশ্চিত করি।</p>
@@ -466,23 +427,19 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // 1 Second Interval Auto Slider Script
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-item');
-
         function showNextSlide() {
             if(slides.length === 0) return;
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-
         setInterval(showNextSlide, 1000);
 
         const categories = ['sunglass', 'perfume', 'watch', 'gadget', 'fashion'];
-        const sampleProducts = [
+        const defaultProducts = [
             { id: 1, title: 'প্রিমিয়াম ব্ল্যাক সানগ্লাস', category: 'sunglass', price: 650, oldPrice: 900, image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400' },
             { id: 2, title: 'স্টাইলিশ গোল্ডেন সানগ্লাস', category: 'sunglass', price: 750, oldPrice: 1000, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400' },
             { id: 3, title: 'রয়্যাল উড পারফিউম (লং-লাস্টিং)', category: 'perfume', price: 1200, oldPrice: 1500, image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400' },
@@ -497,12 +454,68 @@
 
         let cart = [];
 
-        function renderAllSections() {
+        // আপনার দেওয়া আসল ইমেইল এবং পাসওয়ার্ড সেট করা হলো
+        const MY_ADMIN_EMAIL = "Tanvverevan781@gmail.com";
+        const MY_ADMIN_PASS = "logeachi.com781781";
+
+        // পেজ লোড হলে চেক করা হবে
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            if (urlParams.get('admin') === 'owner' || localStorage.getItem('isSecretAdminLoggedIn') === 'true') {
+                document.getElementById('secretAdminSection').classList.remove('hidden');
+                
+                if (localStorage.getItem('isSecretAdminLoggedIn') === 'true') {
+                    showAdminUploadPanel();
+                }
+            }
+            renderAllSections();
+        }
+
+        // ইমেইল ও পাসওয়ার্ড যাচাই করার ফাংশন
+        function verifyAdminLogin() {
+            const enteredEmail = document.getElementById('adminEmailInput').value.trim();
+            const enteredPass = document.getElementById('adminPasswordInput').value.trim();
+
+            if (enteredEmail === MY_ADMIN_EMAIL && enteredPass === MY_ADMIN_PASS) {
+                localStorage.setItem('isSecretAdminLoggedIn', 'true');
+                showAdminUploadPanel();
+            } else {
+                alert('ভুল ইমেইল অথবা পাসওয়ার্ড! সঠিক তথ্য প্রদান করুন।');
+            }
+        }
+
+        function showAdminUploadPanel() {
+            document.getElementById('adminLoginGate').classList.add('hidden');
+            document.getElementById('adminPanelContent').classList.remove('hidden');
+        }
+
+        function hideAdminPanel() {
+            localStorage.removeItem('isSecretAdminLoggedIn');
+            document.getElementById('secretAdminSection').classList.add('hidden');
+            document.getElementById('adminPanelContent').classList.add('hidden');
+            document.getElementById('adminLoginGate').classList.remove('hidden');
+            document.getElementById('adminEmailInput').value = '';
+            document.getElementById('adminPasswordInput').value = '';
+            window.location.href = window.location.pathname;
+        }
+
+        function getAllProducts() {
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            return [...defaultProducts, ...customProducts];
+        }
+
+        function renderAllSections(searchQuery = '') {
+            const allProds = getAllProducts();
             categories.forEach(cat => {
                 const gridContainer = document.getElementById(`grid-${cat}`);
                 if (!gridContainer) return;
-                const filtered = sampleProducts.filter(p => p.category === cat);
+                const filtered = allProds.filter(p => p.category === cat && p.title.toLowerCase().includes(searchQuery));
                 gridContainer.innerHTML = '';
+                if(filtered.length === 0) {
+                    gridContainer.innerHTML = '<p class="text-gray-400 text-xs col-span-full py-4 text-center">এই ক্যাটাগরিতে কোনো প্রোডাক্ট নেই।</p>';
+                    return;
+                }
                 filtered.forEach(product => {
                     gridContainer.innerHTML += `
                         <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
@@ -527,43 +540,62 @@
                 });
             });
         }
-        renderAllSections();
 
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            categories.forEach(cat => {
-                const gridContainer = document.getElementById(`grid-${cat}`);
-                if (!gridContainer) return;
-                const filtered = sampleProducts.filter(p => p.category === cat && p.title.toLowerCase().includes(query));
-                gridContainer.innerHTML = '';
-                filtered.forEach(product => {
-                    gridContainer.innerHTML += `
-                        <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
-                            <div class="relative overflow-hidden rounded-xl mb-3">
-                                <img src="${product.image}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl">
-                                <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/80 backdrop-blur-md text-white px-2 py-0.5 rounded-full font-bold uppercase">${product.category}</span>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <h4 class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1">${product.title}</h4>
-                                <div class="mt-2">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <p class="text-brand-orange font-black text-sm md:text-base">৳ ${product.price}</p>
-                                        ${product.oldPrice ? `<p class="text-gray-400 text-xs line-through">৳ ${product.oldPrice}</p>` : ''}
-                                    </div>
-                                    <button onclick="addToCart(${product.id})" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
-                                        <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            });
+            renderAllSections(query);
+        }
+
+        function previewAdminFile() {
+            const preview = document.getElementById('adminImagePreview');
+            const file = document.getElementById('adminProductImage').files[0];
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                preview.classList.remove('hidden');
+            }
+            if (file) { reader.readAsDataURL(file); } else { preview.src = ""; preview.classList.add('hidden'); }
+        }
+
+        function addNewProductToSite() {
+            const name = document.getElementById('adminProductName').value;
+            const price = document.getElementById('adminProductPrice').value;
+            const category = document.getElementById('adminProductCategory').value;
+            const image = document.getElementById('adminImagePreview').src;
+
+            if(!name || !price || !image || document.getElementById('adminImagePreview').classList.contains('hidden')) {
+                alert('দয়া করে প্রোডাক্টের নাম, দাম এবং ছবি সঠিকভাবে দিন!');
+                return;
+            }
+
+            const newProduct = {
+                id: Date.now(),
+                title: name,
+                category: category,
+                price: Number(price),
+                oldPrice: Number(price) + 300,
+                image: image
+            };
+
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            customProducts.push(newProduct);
+            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+
+            alert('প্রোডাক্ট সফলভাবে ওয়েবসাইটে যোগ করা হয়েছে!');
+            document.getElementById('adminProductName').value = '';
+            document.getElementById('adminProductPrice').value = '';
+            document.getElementById('adminProductImage').value = '';
+            document.getElementById('adminImagePreview').src = '';
+            document.getElementById('adminImagePreview').classList.add('hidden');
+
+            renderAllSections();
+            window.location.hash = `#${category}-section`;
         }
 
         function toggleCart() { document.getElementById('cartModal').classList.toggle('hidden'); }
         function addToCart(id) {
-            const item = sampleProducts.find(p => p.id === id);
+            const allProds = getAllProducts();
+            const item = allProds.find(p => p.id === id);
             if(item) { cart.push(item); updateCart(); toggleCart(); }
         }
         function updateCart() {
@@ -608,7 +640,7 @@
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         function handleCheckout(e) {
             e.preventDefault();
-            alert("আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে! খুব শীঘ্রই আপনার ঠিকানায় প্রতিনিধি যোগাযোগ করবেন।");
+            alert("অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে!");
             cart = [];
             updateCart();
             closeCheckoutModal();
