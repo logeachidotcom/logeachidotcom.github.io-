@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="bn" class="scroll-smooth">
 <head>
+    <!-- Firebase App (core) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<!-- Firebase Firestore (Database) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBS9G_13sh@JHthzocADDTMvVqk",
+    authDomain: "logeachidotcom-f4e1e.firebaseapp.com",
+    projectId: "logeachidotcom-f4e1e",
+    storageBucket: "logeachidotcom-f4e1e.firebasestorage.app",
+    messagingSenderId: "1060734330563",
+    appId: "1:1060734330563:web:94ef66dabe99a",
+    measurementId: "G-N7QJZ923L8"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  console.log("Firebase Connected Successfully!");
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogeAchi.com - এক ক্লিকে সবকিছু</title>
