@@ -112,10 +112,13 @@
                 </div>
             </div>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
                 <button onclick="openLoginModal()" id="userAuthBtn" class="flex items-center gap-2 text-sm font-bold bg-gray-100 hover:bg-orange-50 hover:text-brand-orange px-4 py-2 rounded-full transition">
                     <i class="fa-regular fa-circle-user text-lg text-brand-orange"></i>
                     <span id="userName">লগইন</span>
+                </button>
+                <button onclick="openMyOrdersModal()" id="myOrdersBtn" class="hidden text-xs bg-orange-100 text-brand-orange px-3 py-2 rounded-full font-bold hover:bg-orange-200 transition">
+                    <i class="fa-solid fa-box-archive"></i> আমার অর্ডার
                 </button>
                 <button onclick="toggleCart()" class="relative bg-brand-dark text-white p-2.5 rounded-full hover:bg-brand-orange transition shadow-md">
                     <i class="fa-solid fa-bag-shopping text-base"></i>
@@ -249,9 +252,9 @@
         </section>
     </main>
 
-    <!-- Hidden Secret Admin Section -->
+    <!-- Hidden Secret Admin Section (Accessible via ?admin=owner) -->
     <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
-        <div class="max-w-xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
+        <div class="max-w-2xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
             
             <!-- Step 1: Secret Login Gate -->
             <div id="adminLoginGate" class="text-center py-6">
@@ -283,7 +286,7 @@
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-brand-dark">প্রোডাক্ট আপলোড প্যানেল</h3>
+                            <h3 class="text-lg font-bold text-brand-dark">প্রোডাক্ট আপলোড প্যানেল (৮টি ছবি পর্যন্ত)</h3>
                             <p class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> সফলভাবে লগইন করা হয়েছে</p>
                         </div>
                     </div>
@@ -294,6 +297,10 @@
                     <div>
                         <label class="block text-xs font-bold mb-1 text-gray-600">প্রোডাক্টের নাম *</label>
                         <input type="text" id="adminProductName" placeholder="যেমন: প্রিমিয়াম সানগ্লাস" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1 text-gray-600">প্রোডাক্টের বিবরণ (Description) *</label>
+                        <textarea id="adminProductDesc" placeholder="প্রোডাক্ট সম্পর্কে বিস্তারিত লিখুন..." class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none" rows="3"></textarea>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
@@ -311,25 +318,87 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- 8 Images Upload Section -->
                     <div>
-                        <label class="block text-xs font-bold mb-1 text-gray-600">ছবির ফাইল সিলেক্ট করুন *</label>
-                        <input type="file" id="adminProductImage" accept="image/*" onchange="previewAdminFile()" class="w-full border border-gray-200 p-2.5 rounded-xl text-sm bg-gray-50">
-                        <img id="adminImagePreview" class="w-full h-36 object-contain mt-3 rounded-xl border border-dashed border-gray-300 hidden" alt="প্রিভিউ">
+                        <label class="block text-xs font-bold mb-2 text-brand-dark"><i class="fa-solid fa-images text-brand-orange"></i> প্রোডাক্টের ছবি আপলোড করুন (প্রধান ছবি + অতিরিক্ত ৭টি ছবি):</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">প্রধান ছবি (Main) *</label>
+                                <input type="file" id="adminImg1" accept="image/*" onchange="previewAdminMultiImage(1)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview1" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ২</label>
+                                <input type="file" id="adminImg2" accept="image/*" onchange="previewAdminMultiImage(2)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview2" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৩</label>
+                                <input type="file" id="adminImg3" accept="image/*" onchange="previewAdminMultiImage(3)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview3" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৪</label>
+                                <input type="file" id="adminImg4" accept="image/*" onchange="previewAdminMultiImage(4)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview4" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৫</label>
+                                <input type="file" id="adminImg5" accept="image/*" onchange="previewAdminMultiImage(5)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview5" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৬</label>
+                                <input type="file" id="adminImg6" accept="image/*" onchange="previewAdminMultiImage(6)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview6" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৭</label>
+                                <input type="file" id="adminImg7" accept="image/*" onchange="previewAdminMultiImage(7)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview7" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 text-gray-600">ছবি ৮</label>
+                                <input type="file" id="adminImg8" accept="image/*" onchange="previewAdminMultiImage(8)" class="w-full border border-gray-200 p-1.5 rounded-xl text-[10px] bg-gray-50">
+                                <img id="preview8" class="w-full h-20 object-contain mt-1 rounded-lg border border-dashed border-gray-300 hidden">
+                            </div>
+                        </div>
                     </div>
-                    <button onclick="addNewProductToSite()" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition">
+
+                    <button onclick="addNewProductToSite()" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition mt-2">
                         প্রোডাক্ট ওয়েবসাইটে পাবলিশ করুন
                     </button>
                 </div>
 
-                <!-- Admin Added Products Management List -->
+                <!-- Admin Added Products Management List with Delete Feature -->
                 <div class="mt-8 pt-6 border-t border-gray-100">
-                    <h4 class="font-bold text-sm text-brand-dark mb-3">আপনার আপলোডকৃত অতিরিক্ত প্রোডাক্টসমূহ:</h4>
-                    <div id="adminAddedProductsList" class="space-y-2 max-h-48 overflow-y-auto"></div>
+                    <h4 class="font-bold text-sm text-brand-dark mb-3"><i class="fa-solid fa-list-check text-brand-orange"></i> আপলোডকৃত প্রোডাক্ট ম্যানেজমেন্ট (রিমুভ বা ডিলিট করুন):</h4>
+                    <div id="adminAddedProductsList" class="space-y-2 max-h-56 overflow-y-auto"></div>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Product Details Modal -->
+    <div id="productDetailsModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductDetailsModal()" class="absolute right-4 top-4 text-gray-400 hover:text-black font-bold text-2xl z-10">&times;</button>
+            <div id="modalProductContent"></div>
+        </div>
+    </div>
+
+    <!-- My Orders History Modal -->
+    <div id="myOrdersModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 relative shadow-2xl max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h3 class="text-lg font-bold text-brand-dark"><i class="fa-solid fa-box-archive text-brand-orange"></i> আমার অর্ডার হিস্ট্রি</h3>
+                <button onclick="closeMyOrdersModal()" class="text-gray-400 hover:text-black font-bold text-xl">&times;</button>
+            </div>
+            <div id="userOrdersList" class="space-y-3"></div>
+        </div>
+    </div>
 
     <!-- Shopping Cart Modal -->
     <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
@@ -357,7 +426,7 @@
             <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-gray-400 hover:text-black font-bold text-xl">&times;</button>
             <div class="w-16 h-16 bg-orange-50 text-brand-orange rounded-full flex items-center justify-center mx-auto mb-4 text-2xl"><i class="fa-solid fa-user-lock"></i></div>
             <h3 class="text-xl font-bold text-brand-dark mb-1">স্বাগতম LogeAchi-তে!</h3>
-            <p class="text-xs text-gray-500 mb-6">আপনার অ্যাকাউন্ট কানেক্ট করে দ্রুত কেনাকাটা সম্পন্ন করুন</p>
+            <p class="text-xs text-gray-500 mb-6">আপনার অ্যাকাউন্ট কানেক্ট করে দ্রুত কেনাকাটা ও অর্ডার হিস্ট্রি দেখুন</p>
             <button onclick="loginWithGoogle()" class="w-full border-2 border-gray-200 hover:border-brand-orange py-3 rounded-2xl flex items-center justify-center gap-3 hover:bg-orange-50/50 transition shadow-sm mb-4 group">
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google">
                 <span class="text-sm font-bold text-gray-700 group-hover:text-brand-orange">Google অ্যাকাউন্ট দিয়ে লগইন</span>
@@ -464,19 +533,20 @@
 
         const categories = ['sunglass', 'perfume', 'watch', 'gadget', 'fashion'];
         const defaultProducts = [
-            { id: 1, title: 'প্রিমিয়াম ব্ল্যাক সানগ্লাস', category: 'sunglass', price: 650, oldPrice: 900, image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400' },
-            { id: 2, title: 'স্টাইলিশ গোল্ডেন সানগ্লাস', category: 'sunglass', price: 750, oldPrice: 1000, image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400' },
-            { id: 3, title: 'রয়্যাল উড পারফিউম (লং-লাস্টিং)', category: 'perfume', price: 1200, oldPrice: 1500, image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400' },
-            { id: 4, title: 'ফ্লোরাল ফ্রেশ পারফিউম', category: 'perfume', price: 950, oldPrice: 1200, image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400' },
-            { id: 5, title: 'লেদার স্ট্র্যাপ ক্লাসিক ওয়াচ', category: 'watch', price: 1450, oldPrice: 1800, image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400' },
-            { id: 6, title: 'মেটালিক স্মার্ট ওয়াচ', category: 'watch', price: 2200, oldPrice: 2800, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400' },
-            { id: 7, title: 'ওয়্যারলেস ব্লুটুথ ইয়ারবাড', category: 'gadget', price: 990, oldPrice: 1400, image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400' },
-            { id: 8, title: 'পোর্টেবল মিনি ব্লুটুথ স্পিকার', category: 'gadget', price: 850, oldPrice: 1100, image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400' },
-            { id: 9, title: 'প্রিমিয়াম কটন মেনস ক্যাজুয়াল শার্ট', category: 'fashion', price: 890, oldPrice: 1200, image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400' },
-            { id: 10, title: 'স্টাইলিশ ওভারসাইজড হুডি', category: 'fashion', price: 1250, oldPrice: 1600, image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400' }
+            { id: 1, title: 'প্রিমিয়াম ব্ল্যাক সানগ্লাস', category: 'sunglass', price: 650, oldPrice: 900, description: 'স্টাইলিশ ও ইউভি প্রোটেক্টেড সানগ্লাস। চোখের সুরক্ষায় সেরা চয়েস।', images: ['https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400', 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400', '', '', '', '', '', ''] },
+            { id: 2, title: 'স্টাইলিশ গোল্ডেন সানগ্লাস', category: 'sunglass', price: 750, oldPrice: 1000, description: 'আকর্ষণীয় গোল্ডেন ফ্রেমের প্রিমিয়াম সানগ্লাস।', images: ['https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400', '', '', '', '', '', '', ''] },
+            { id: 3, title: 'রয়্যাল উড পারফিউম (লং-লাস্টিং)', category: 'perfume', price: 1200, oldPrice: 1500, description: 'দীর্ঘস্থায়ী ও সতেজ সুবাসের এক্সক্লুসিভ পারফিউম।', images: ['https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400', 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400', '', '', '', '', '', ''] },
+            { id: 4, title: 'ফ্লোরাল ফ্রেশ পারফিউম', category: 'perfume', price: 950, oldPrice: 1200, description: 'মনমাতানো ফুলের সুবাসে ভরা আকর্ষণীয় পারফিউম।', images: ['https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400', '', '', '', '', '', '', ''] },
+            { id: 5, title: 'লেদার স্ট্র্যাপ ক্লাসিক ওয়াচ', category: 'watch', price: 1450, oldPrice: 1800, description: 'আরামদায়ক লেদার স্ট্র্যাপযুক্ত ক্লাসিক ঘড়ি।', images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400', 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', '', '', '', '', '', ''] },
+            { id: 6, title: 'মেটালিক স্মার্ট ওয়াচ', category: 'watch', price: 2200, oldPrice: 2800, description: 'আধুনিক ফিচারের চমৎকার মেটালিক স্মার্টওয়াচ।', images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', '', '', '', '', '', '', ''] },
+            { id: 7, title: 'ওয়্যারলেস ব্লুটুথ ইয়ারবাড', category: 'gadget', price: 990, oldPrice: 1400, description: 'হাই-কোয়ালিটি সাউন্ড ও লং ব্যাটারি ব্যাকআপ ইয়ারবাড।', images: ['https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400', 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400', '', '', '', '', '', ''] },
+            { id: 8, title: 'পোর্টেবল মিনি ব্লুটুথ স্পিকার', category: 'gadget', price: 850, oldPrice: 1100, description: 'ছোট সাইজের দুর্দান্ত বেসযুক্ত পোর্টেবল স্পিকার।', images: ['https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400', '', '', '', '', '', '', ''] },
+            { id: 9, title: 'প্রিমিয়াম কটন মেনস ক্যাজুয়াল শার্ট', category: 'fashion', price: 890, oldPrice: 1200, description: '১০০% প্রিমিয়াম কটন কাপড়ের আরামদায়ক ক্যাজুয়াল শার্ট।', images: ['https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400', 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400', '', '', '', '', '', ''] },
+            { id: 10, title: 'স্টাইলিশ ওভারসাইজড হুডি', category: 'fashion', price: 1250, oldPrice: 1600, description: 'শীতের জন্য ট্রেন্ডি ও প্রিমিয়াম কোয়ালিটির হুডি।', images: ['https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400', '', '', '', '', '', '', ''] }
         ];
 
         let cart = [];
+        let loggedInUser = localStorage.getItem('siteLoggedInUser') ? JSON.parse(localStorage.getItem('siteLoggedInUser')) : null;
 
         const MY_ADMIN_EMAIL = "Tanvverevan781@gmail.com";
         const MY_ADMIN_PASS = "logeachi.com781781";
@@ -489,8 +559,19 @@
                     showAdminUploadPanel();
                 }
             }
+            checkLoginState();
             renderAllSections();
             renderAdminAddedProductsList();
+        }
+
+        function checkLoginState() {
+            if(loggedInUser) {
+                document.getElementById('userName').innerText = loggedInUser.name;
+                document.getElementById('myOrdersBtn').classList.remove('hidden');
+            } else {
+                document.getElementById('userName').innerText = "লগইন";
+                document.getElementById('myOrdersBtn').classList.add('hidden');
+            }
         }
 
         function verifyAdminLogin() {
@@ -524,6 +605,105 @@
             return [...defaultProducts, ...customProducts];
         }
 
+        let adminTempImages = ['', '', '', '', '', '', '', ''];
+        function previewAdminMultiImage(index) {
+            const fileInput = document.getElementById(`adminImg${index}`);
+            const previewImg = document.getElementById(`preview${index}`);
+            const file = fileInput.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    adminTempImages[index - 1] = reader.result;
+                    previewImg.src = reader.result;
+                    previewImg.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addNewProductToSite() {
+            const name = document.getElementById('adminProductName').value.trim();
+            const desc = document.getElementById('adminProductDesc').value.trim();
+            const price = document.getElementById('adminProductPrice').value.trim();
+            const category = document.getElementById('adminProductCategory').value;
+
+            if(!name || !price || !desc || !adminTempImages[0]) {
+                alert('দয়া করে প্রোডাক্টের নাম, বিবরণ, দাম এবং অন্তত প্রধান ছবি (Main Image) দিন!');
+                return;
+            }
+
+            const newProduct = {
+                id: Date.now(),
+                title: name,
+                description: desc,
+                category: category,
+                price: Number(price),
+                oldPrice: Number(price) + 300,
+                images: [...adminTempImages]
+            };
+
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            customProducts.push(newProduct);
+            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+
+            alert('প্রোডাক্ট সফলভাবে ওয়েবসাইটে যোগ করা হয়েছে!');
+            document.getElementById('adminProductName').value = '';
+            document.getElementById('adminProductDesc').value = '';
+            document.getElementById('adminProductPrice').value = '';
+            for(let i=1; i<=8; i++) {
+                const fileElem = document.getElementById(`adminImg${i}`);
+                if(fileElem) fileElem.value = '';
+                const prevElem = document.getElementById(`preview${i}`);
+                if(prevElem) {
+                    prevElem.src = '';
+                    prevElem.classList.add('hidden');
+                }
+            }
+            adminTempImages = ['', '', '', '', '', '', '', ''];
+
+            renderAllSections();
+            renderAdminAddedProductsList();
+        }
+
+        function renderAdminAddedProductsList() {
+            const listContainer = document.getElementById('adminAddedProductsList');
+            if(!listContainer) return;
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            
+            if(customProducts.length === 0) {
+                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো কাস্টম প্রোডাক্ট যোগ করা হয়নি।</p>';
+                return;
+            }
+
+            listContainer.innerHTML = '';
+            customProducts.forEach((prod) => {
+                listContainer.innerHTML += `
+                    <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <img src="${prod.images[0]}" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title}</p>
+                                <p class="text-[10px] text-brand-orange font-bold">৳ ${prod.price} (${prod.category})</p>
+                            </div>
+                        </div>
+                        <button onclick="deleteCustomProduct(${prod.id})" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1">
+                            <i class="fa-solid fa-trash-can"></i> রিমুভ
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteCustomProduct(id) {
+            if(!confirm('আপনি কি নিশ্চিতভাবে এই প্রোডাক্টটি ওয়েবসাইট থেকে রিমুভ বা ডিলিট করতে চান?')) return;
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            customProducts = customProducts.filter(p => p.id !== id);
+            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+            renderAllSections();
+            renderAdminAddedProductsList();
+            alert('প্রোডাক্ট সফলভাবে রিমুভ করা হয়েছে!');
+        }
+
         function renderAllSections(searchQuery = '') {
             const allProds = getAllProducts();
             categories.forEach(cat => {
@@ -538,12 +718,12 @@
                 filtered.forEach(product => {
                     gridContainer.innerHTML += `
                         <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
-                            <div class="relative overflow-hidden rounded-xl mb-3">
-                                <img src="${product.image}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl">
+                            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="openProductDetails(${product.id})">
+                                <img src="${product.images[0]}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition duration-300">
                                 <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/85 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full font-bold uppercase">${product.category}</span>
                             </div>
                             <div class="flex-1 flex flex-col justify-between">
-                                <h4 class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1">${product.title}</h4>
+                                <h4 onclick="openProductDetails(${product.id})" class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1 cursor-pointer hover:text-brand-orange transition">${product.title}</h4>
                                 <div class="mt-2">
                                     <div class="flex items-center gap-2 mb-2">
                                         <p class="text-brand-orange font-black text-sm md:text-base">৳ ${product.price}</p>
@@ -565,94 +745,60 @@
             renderAllSections(query);
         }
 
-        function previewAdminFile() {
-            const preview = document.getElementById('adminImagePreview');
-            const file = document.getElementById('adminProductImage').files[0];
-            const reader = new FileReader();
-            reader.onloadend = function () {
-                preview.src = reader.result;
-                preview.classList.remove('hidden');
-            }
-            if (file) { reader.readAsDataURL(file); } else { preview.src = ""; preview.classList.add('hidden'); }
-        }
+        // Product Details Modal with Multiple Images Preview
+        function openProductDetails(id) {
+            const allProds = getAllProducts();
+            const prod = allProds.find(p => p.id === id);
+            if(!prod) return;
 
-        function addNewProductToSite() {
-            const name = document.getElementById('adminProductName').value.trim();
-            const price = document.getElementById('adminProductPrice').value.trim();
-            const category = document.getElementById('adminProductCategory').value;
-            const image = document.getElementById('adminImagePreview').src;
-
-            if(!name || !price || !image || document.getElementById('adminImagePreview').classList.contains('hidden')) {
-                alert('দয়া করে প্রোডাক্টের নাম, দাম এবং ছবি সঠিকভাবে দিন!');
-                return;
-            }
-
-            const newProduct = {
-                id: Date.now(),
-                title: name,
-                category: category,
-                price: Number(price),
-                oldPrice: Number(price) + 300,
-                image: image
-            };
-
-            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            customProducts.push(newProduct);
-            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
-
-            alert('প্রোডাক্ট সফলভাবে ওয়েবসাইটে যোগ করা হয়েছে!');
-            document.getElementById('adminProductName').value = '';
-            document.getElementById('adminProductPrice').value = '';
-            document.getElementById('adminProductImage').value = '';
-            document.getElementById('adminImagePreview').src = '';
-            document.getElementById('adminImagePreview').classList.add('hidden');
-
-            renderAllSections();
-            renderAdminAddedProductsList();
-        }
-
-        function renderAdminAddedProductsList() {
-            const listContainer = document.getElementById('adminAddedProductsList');
-            if(!listContainer) return;
-            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            
-            if(customProducts.length === 0) {
-                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো কাস্টম প্রোডাক্ট যোগ করা হয়নি।</p>';
-                return;
-            }
-
-            listContainer.innerHTML = '';
-            customProducts.forEach((prod) => {
-                listContainer.innerHTML += `
-                    <div class="flex items-center justify-between bg-gray-50 p-2 rounded-xl border border-gray-100">
-                        <div class="flex items-center gap-2">
-                            <img src="${prod.image}" class="w-8 h-8 rounded-lg object-cover">
-                            <div>
-                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title}</p>
-                                <p class="text-[10px] text-brand-orange font-bold">৳ ${prod.price} (${prod.category})</p>
-                            </div>
-                        </div>
-                        <button onclick="deleteCustomProduct(${prod.id})" class="text-xs text-red-500 hover:bg-red-50 p-1.5 rounded-lg transition"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                `;
+            let validImgs = prod.images.filter(img => img && img.trim() !== "");
+            let galleryHtml = '';
+            validImgs.forEach((img) => {
+                galleryHtml += `<img src="${img}" onclick="changeMainViewImage('${img}')" class="w-16 h-16 rounded-xl object-cover cursor-pointer border-2 hover:border-brand-orange transition shrink-0">`;
             });
+
+            const modalContent = document.getElementById('modalProductContent');
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="relative overflow-hidden rounded-2xl border border-gray-100">
+                        <img id="mainDetailImage" src="${validImgs[0]}" class="w-full h-64 object-cover rounded-2xl">
+                    </div>
+                    <div class="flex gap-2 overflow-x-auto pb-1">
+                        ${galleryHtml}
+                    </div>
+                    <div>
+                        <span class="text-[10px] bg-brand-orange/10 text-brand-orange font-bold px-2.5 py-0.5 rounded-full uppercase">${prod.category}</span>
+                        <h3 class="text-lg font-bold text-brand-dark mt-1">${prod.title}</h3>
+                        <div class="flex items-center gap-3 my-2">
+                            <span class="text-xl font-black text-brand-orange">৳ ${prod.price}</span>
+                            ${prod.oldPrice ? `<span class="text-sm text-gray-400 line-through">৳ ${prod.oldPrice}</span>` : ''}
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed mt-2 whitespace-pre-line">${prod.description || 'কোনো বিবরণ দেওয়া হয়নি।'}</p>
+                    </div>
+                    <button onclick="addToCart(${prod.id}); closeProductDetailsModal();" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
+                    </button>
+                </div>
+            `;
+            document.getElementById('productDetailsModal').classList.remove('hidden');
         }
 
-        function deleteCustomProduct(id) {
-            if(!confirm('আপনি কি এই প্রোডাক্টটি মুছে ফেলতে চান?')) return;
-            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            customProducts = customProducts.filter(p => p.id !== id);
-            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
-            renderAllSections();
-            renderAdminAddedProductsList();
+        function changeMainViewImage(src) {
+            document.getElementById('mainDetailImage').src = src;
+        }
+
+        function closeProductDetailsModal() {
+            document.getElementById('productDetailsModal').classList.add('hidden');
         }
 
         function toggleCart() { document.getElementById('cartModal').classList.toggle('hidden'); }
+        
         function addToCart(id) {
             const allProds = getAllProducts();
             const item = allProds.find(p => p.id === id);
             if(item) { cart.push(item); updateCart(); toggleCart(); }
         }
+
         function updateCart() {
             document.getElementById('cartCount').innerText = cart.length;
             const cartItems = document.getElementById('cartItems');
@@ -666,7 +812,7 @@
                     cartItems.innerHTML += `
                         <div class="flex justify-between items-center border-b pb-3">
                             <div class="flex items-center gap-3">
-                                <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
+                                <img src="${item.images[0]}" class="w-10 h-10 rounded-lg object-cover">
                                 <div>
                                     <h5 class="text-xs font-bold text-gray-800 line-clamp-1">${item.title}</h5>
                                     <p class="text-xs text-brand-orange font-bold">৳ ${item.price}</p>
@@ -679,14 +825,49 @@
             }
             document.getElementById('cartTotal').innerText = total;
         }
+
         function removeFromCart(index) { cart.splice(index, 1); updateCart(); }
+
         function openLoginModal() { document.getElementById('loginModal').classList.remove('hidden'); }
         function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
+        
         function loginWithGoogle() {
-            document.getElementById('userName').innerText = "অ্যাকাউন্ট";
+            loggedInUser = { name: "গ্রাহক রাজু", email: "user@gmail.com" };
+            localStorage.setItem('siteLoggedInUser', JSON.stringify(loggedInUser));
+            checkLoginState();
             closeLoginModal();
             alert("Google অ্যাকাউন্টের মাধ্যমে সফলভাবে সাইন ইন করা হয়েছে!");
         }
+
+        function openMyOrdersModal() {
+            const ordersList = document.getElementById('userOrdersList');
+            let savedOrders = JSON.parse(localStorage.getItem('siteUserOrders')) || [];
+            
+            if(savedOrders.length === 0) {
+                ordersList.innerHTML = '<p class="text-xs text-gray-400 text-center py-6">আপনার কোনো অর্ডার হিস্ট্রি নেই!</p>';
+            } else {
+                ordersList.innerHTML = '';
+                savedOrders.forEach(ord => {
+                    ordersList.innerHTML += `
+                        <div class="bg-gray-50 border border-gray-100 p-3 rounded-2xl text-xs space-y-1">
+                            <div class="flex justify-between font-bold text-brand-dark">
+                                <span>তারিখ: ${ord.date}</span>
+                                <span class="text-brand-orange">৳ ${ord.total}</span>
+                            </div>
+                            <p class="text-gray-600">পণ্য: ${ord.itemsSummary}</p>
+                            <p class="text-gray-500">ডেলিভারি ঠিকানা: ${ord.address} (${ord.phone})</p>
+                            <span class="inline-block bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-bold text-[10px]">সফলভাবে অর্ডারকৃত</span>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('myOrdersModal').classList.remove('hidden');
+        }
+
+        function closeMyOrdersModal() {
+            document.getElementById('myOrdersModal').classList.add('hidden');
+        }
+
         function openCheckoutModal() {
             if(cart.length === 0) { alert("আপনার কার্টে কোনো প্রোডাক্ট নেই!"); return; }
             toggleCart();
@@ -694,7 +875,6 @@
         }
         function closeCheckoutModal() { document.getElementById('checkoutModal').classList.add('hidden'); }
         
-        // WhatsApp Order Handler with Full Details
         function handleCheckout(e) {
             e.preventDefault();
             if(cart.length === 0) { alert("আপনার কার্টে কোনো প্রোডাক্ট নেই!"); return; }
@@ -707,17 +887,27 @@
             const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
 
             let productDetails = "";
+            let itemsSummaryStr = "";
             let subtotal = 0;
             cart.forEach((item, index) => {
                 subtotal += item.price;
                 productDetails += `%0A  ${index + 1}. ${item.title} - ৳${item.price}`;
+                itemsSummaryStr += item.title + (index < cart.length - 1 ? ", " : "");
             });
 
-            // Delivery charge calculation based on area selection
             let deliveryCharge = area.includes('বাইরে') ? 120 : 60;
             let grandTotal = subtotal + deliveryCharge;
 
-            // Format WhatsApp Message
+            let savedOrders = JSON.parse(localStorage.getItem('siteUserOrders')) || [];
+            savedOrders.unshift({
+                date: new Date().toLocaleDateString('bn-BD'),
+                itemsSummary: itemsSummaryStr,
+                total: grandTotal,
+                address: address,
+                phone: phone
+            });
+            localStorage.setItem('siteUserOrders', JSON.stringify(savedOrders));
+
             const whatsappMessage = `আসসালামু আলাইকুম! আমি একটি নতুন অর্ডার করতে চাই:%0A%0A` +
                                     `🛒 *অর্ডারকৃত পণ্যসমূহ:*${productDetails}%0A%0A` +
                                     `📦 *সাবটোটাল:* ৳${subtotal}%0A` +
@@ -725,16 +915,14 @@
                                     `💰 *সর্বমোট বিল:* ৳${grandTotal}%0A%0A` +
                                     `👤 *কাস্টমারের নাম:* ${name}%0A` +
                                     `📞 *ফোন নাম্বার:* ${phone}%0A` +
-                                    `📍 *জেলা:* ${district}%0A` +
+                                    `📍 *জেলা:* ঠিকানার তথ্য... (${district})%0A` +
                                     `🏠 *সম্পূর্ণ ঠিকানা:* ${address}%0A` +
                                     `💳 *পেমেন্ট পদ্ধতি:* ${paymentMethod}%0A%0A` +
                                     `দয়া করে অর্ডারটি কনফার্ম করুন।`;
 
-            // Redirect to WhatsApp with exact phone number +966579516277
             const whatsappUrl = `https://wa.me/966579516277?text=${whatsappMessage}`;
             window.open(whatsappUrl, '_blank');
 
-            // Reset cart and close modal
             cart = [];
             updateCart();
             closeCheckoutModal();
