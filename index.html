@@ -181,42 +181,6 @@
     <!-- Main Products Sections Container -->
     <main id="dynamic-sections-container" class="container mx-auto px-4 mb-20 space-y-16"></main>
 
-    <!-- Floating Help Center / Live Support Widget -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <!-- Help Options Menu Popup -->
-        <div id="helpMenuPopup" class="hidden absolute bottom-16 right-0 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 w-64 mb-2 transition transform origin-bottom-right">
-            <div class="flex justify-between items-center mb-2 pb-2 border-b border-gray-100">
-                <span class="text-xs font-bold text-brand-dark flex items-center gap-1.5">
-                    <i class="fa-solid fa-headset text-brand-orange"></i> হেল্প সেন্টার ও সাপোর্ট
-                </span>
-                <button onclick="toggleHelpMenu()" class="text-gray-400 hover:text-black text-sm font-bold">&times;</button>
-            </div>
-            <p class="text-[11px] text-gray-500 mb-3">যেকোনো প্রয়োজনে আমাদের সাথে চ্যাট করুন:</p>
-            <div class="space-y-2">
-                <a href="https://wa.me/966579516277" target="_blank" class="flex items-center gap-3 bg-green-50 hover:bg-green-100 text-green-700 p-2.5 rounded-xl font-bold text-xs transition border border-green-200">
-                    <div class="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center text-base"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div>
-                        <p class="leading-tight">হোয়াটসঅ্যাপ (WhatsApp)</p>
-                        <span class="text-[10px] text-green-600 font-normal">২৪ ঘণ্টা অনলাইন</span>
-                    </div>
-                </a>
-                <a href="https://www.facebook.com/logeachidotcom781" target="_blank" class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 text-blue-700 p-2.5 rounded-xl font-bold text-xs transition border border-blue-200">
-                    <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center text-base"><i class="fa-brands fa-facebook-messenger"></i></div>
-                    <div>
-                        <p class="leading-tight">মেসেঞ্জার (Messenger)</p>
-                        <span class="text-[10px] text-blue-600 font-normal">পেজে মেসেজ পাঠান</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Main Toggle Button -->
-        <button onclick="toggleHelpMenu()" class="bg-gradient-to-r from-brand-orange to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl transition hover:scale-110 relative group">
-            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white badge-pulse">💬</span>
-            <i class="fa-solid fa-headset"></i>
-        </button>
-    </div>
-
     <!-- Secret Admin Section (Accessible via ?admin=owner) -->
     <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
         <div class="max-w-2xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
@@ -263,7 +227,7 @@
                     <h4 class="font-bold text-xs text-brand-dark"><i class="fa-solid fa-palette text-indigo-600"></i> লোগো, নাম ও ব্যানার পরিবর্তন করুন:</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-[10px] font-bold mb-1 text-gray-600">ওয়েবসাইটের নাম (যেমন: LogeAchi)</label>
+                            <label class="block text-[10px] font-bold mb-1 text-gray-600">ওয়েবসাইটের নাম</label>
                             <input type="text" id="settingSiteName" placeholder="LogeAchi" class="w-full border border-gray-200 p-2.5 rounded-xl text-xs bg-white focus:outline-none focus:border-brand-orange">
                         </div>
                         <div>
@@ -346,11 +310,10 @@
                     </button>
                 </div>
 
-                <!-- All Products Management List (Default + Custom Edit/Delete Control) -->
+                <!-- Admin Added Products Management List -->
                 <div class="mt-8 pt-6 border-t border-gray-100">
-                    <h4 class="font-bold text-sm text-brand-dark mb-1"><i class="fa-solid fa-list-check text-brand-orange"></i> সকল প্রোডাক্ট ম্যানেজমেন্ট (এডিট ও ডিলিট):</h4>
-                    <p class="text-[11px] text-gray-500 mb-3">আপনি চাইলে আগের ডিফল্ট ও নতুন যেকোনো আইটেম রিমুভ করতে পারবেন।</p>
-                    <div id="adminAddedProductsList" class="space-y-2 max-h-64 overflow-y-auto"></div>
+                    <h4 class="font-bold text-sm text-brand-dark mb-3"><i class="fa-solid fa-list-check text-brand-orange"></i> আপলোডকৃত প্রোডাক্ট ম্যানেজমেন্ট (রিমুভ করুন):</h4>
+                    <div id="adminAddedProductsList" class="space-y-2 max-h-56 overflow-y-auto"></div>
                 </div>
             </div>
 
@@ -411,11 +374,11 @@
         </div>
     </div>
 
-    <!-- Checkout Modal -->
+    <!-- Checkout Modal with 64 Districts, Thana & Union Structure -->
     <div id="checkoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 my-8 shadow-2xl relative">
             <div class="flex justify-between items-center mb-6 border-b pb-3">
-                <h3 class="text-xl font-bold text-brand-dark">অর্ডারের তথ্য দিন</h3>
+                <h3 class="text-xl font-bold text-brand-dark">অর্ডারের সঠিক ঠিকানা দিন</h3>
                 <button onclick="closeCheckoutModal()" class="text-gray-400 hover:text-black text-xl">&times;</button>
             </div>
             <form id="checkoutForm" onsubmit="handleCheckout(event)" class="space-y-4">
@@ -427,26 +390,42 @@
                     <label class="block text-xs font-bold mb-1 text-gray-600">মোবাইল নাম্বার *</label>
                     <input type="tel" id="custPhone" required placeholder="017XXXXXXXX" class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                 </div>
-                <div class="grid grid-cols-2 gap-3">
+
+                <!-- 64 Districts, Thana & Union Cascading Dropdowns -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     <div>
-                        <label class="block text-xs font-bold mb-1 text-gray-600">জেলা (District)</label>
-                        <select id="custDistrict" required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <label class="block text-[11px] font-bold mb-1 text-gray-600">জেলা (District) *</label>
+                        <select id="custDistrict" onchange="loadThanas()" required class="w-full border border-gray-200 p-2 rounded-xl text-xs focus:border-brand-orange focus:outline-none bg-white">
                             <option value="">জেলা সিলেক্ট করুন</option>
-                            <option>ঢাকা</option><option>চট্টগ্রাম</option><option>সিলেট</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>রংপুর</option><option>ময়মনসিংহ</option><option>নোয়াখালী</option><option>কুমিল্লা</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold mb-1 text-gray-600">ডেলিভারি এরিয়া</label>
-                        <select id="custArea" required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
-                            <option value="ঢাকার ভেতরে (৳৬০)">ঢাকার ভেতরে (৳৬০)</option>
-                            <option value="ঢাকার বাইরে (৳১২০)">ঢাকার বাইরে (৳১২০)</option>
+                        <label class="block text-[11px] font-bold mb-1 text-gray-600">থানা/উপজেলা *</label>
+                        <select id="custThana" onchange="loadUnions()" required class="w-full border border-gray-200 p-2 rounded-xl text-xs focus:border-brand-orange focus:outline-none bg-white">
+                            <option value="">প্রথমে জেলা সিলেক্ট করুন</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold mb-1 text-gray-600">ইউনিয়ন / এলাকা *</label>
+                        <select id="custUnion" required class="w-full border border-gray-200 p-2 rounded-xl text-xs focus:border-brand-orange focus:outline-none bg-white">
+                            <option value="">প্রথমে থানা সিলেক্ট করুন</option>
                         </select>
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-bold mb-1 text-gray-600">সম্পূর্ণ ঠিকানা</label>
-                    <textarea id="custAddress" required placeholder="গ্রাম/রাস্তা, থানা, হাউজ নম্বর..." class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none" rows="2"></textarea>
+                    <label class="block text-xs font-bold mb-1 text-gray-600">ডেলিভারি এরিয়া চার্জ</label>
+                    <select id="custArea" required class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <option value="ঢাকার ভেতরে (৳৬০)">ঢাকার ভেতরে (৳৬০)</option>
+                        <option value="ঢাকার বাইরে / জেলা পর্যায়ে (৳১২০)" selected>ঢাকার বাইরে / জেলা পর্যায়ে (৳১২০)</option>
+                    </select>
                 </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1 text-gray-600">বিস্তারিত ঠিকানা (রোড নং, বাসা নং, গ্রাম বা ল্যান্ডমার্ক)</label>
+                    <textarea id="custAddress" required placeholder="যেমন: বাড়ি নং ১২, রোড নং ৫, অমুক মোড়..." class="w-full border border-gray-200 p-2.5 rounded-xl text-sm focus:border-brand-orange focus:outline-none" rows="2"></textarea>
+                </div>
+
                 <div>
                     <label class="block text-xs font-bold mb-2 text-gray-600">পেমেন্ট মেথড নির্বাচন করুন</label>
                     <div class="grid grid-cols-3 gap-3">
@@ -467,6 +446,55 @@
             </form>
         </div>
     </div>
+
+    <!-- ========================================== -->
+    <!-- NEW FLOATING HELP CENTER WIDGET FEATURE    -->
+    <!-- ========================================== -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <!-- Help Center Options Popup (Hidden by default) -->
+        <div id="helpCenterPopup" class="hidden mb-3 bg-white border border-gray-100 shadow-2xl rounded-2xl p-4 w-64 space-y-3 transition-all transform scale-95">
+            <div class="flex justify-between items-center border-b pb-2">
+                <span class="font-bold text-xs text-brand-dark flex items-center gap-1.5">
+                    <i class="fa-solid fa-headset text-brand-orange text-sm"></i> হেল্প সেন্টার ও সাপোর্ট
+                </span>
+                <button onclick="toggleHelpCenter()" class="text-gray-400 hover:text-red-500 text-lg font-bold">&times;</button>
+            </div>
+            <p class="text-[11px] text-gray-500">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে চ্যাট করুন:</p>
+            <div class="space-y-2">
+                <!-- WhatsApp Support Option -->
+                <a href="https://wa.me/966579516277" target="_blank" class="flex items-center gap-3 p-2.5 rounded-xl bg-green-50 hover:bg-green-100 text-green-700 transition font-bold text-xs">
+                    <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-base shadow-sm">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <span>হোয়াটসঅ্যাপ চ্যাট</span>
+                        <p class="text-[9px] text-green-600 font-normal">২৪ ঘণ্টা ওপেন</p>
+                    </div>
+                </a>
+                <!-- Facebook Messenger Support Option -->
+                <a href="https://www.facebook.com/logeachidotcom781" target="_blank" class="flex items-center gap-3 p-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 transition font-bold text-xs">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-base shadow-sm">
+                        <i class="fa-brands fa-facebook-messenger"></i>
+                    </div>
+                    <div>
+                        <span>ফেসবুক মেসেঞ্জার</span>
+                        <p class="text-[9px] text-blue-600 font-normal">সরাসরি মেসেজ দিন</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Floating Help Center Button -->
+        <button onclick="toggleHelpCenter()" class="bg-brand-dark hover:bg-brand-orange text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-white relative group">
+            <i class="fa-solid fa-headset text-2xl"></i>
+            <!-- Pulse indicator dot -->
+            <span class="absolute top-0 right-0 w-4 h-4 bg-brand-orange rounded-full border-2 border-white badge-pulse"></span>
+            <span class="absolute left-16 bg-brand-dark text-white text-[11px] font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap shadow-md pointer-events-none">
+                হেল্প সেন্টার 💬
+            </span>
+        </button>
+    </div>
+    <!-- ========================================== -->
 
     <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-12 pb-6 border-t-4 border-brand-orange">
@@ -497,6 +525,134 @@
 
     <!-- JavaScript -->
     <script>
+        // --- 64 Districts and sample Thana & Union Mapping Database ---
+        const bdDistrictsData = {
+            "ঢাকা": {
+                "ধানমন্ডি": ["ধানমন্ডি আবাসিক এলাকা", "জিগাতলা", "শংকর", "কালাবাগান"],
+                "গুলশান": ["গুলশান-১", "গুলশান-২", "নিকেতন", "মহাকালী"],
+                "উত্তরা": ["সেক্টর ১", "সেক্টর ৩", "সেক্টর ৭", "উত্তরা মডেল টাউন"],
+                "মিরপুর": ["মিরপুর ১০", "মিরপুর ১", "পল্লবী", "কাজীপাড়া"],
+                "তেজগাঁও": ["কাওরান বাজার", "নাখালপাড়া", "কুনিপাড়া"]
+            },
+            "চট্টগ্রাম": {
+                "কোতোয়ালী": ["আন্দরকিল্লা", "চন্দনপুরা", "ফিরিঙ্গী বাজার"],
+                "পাঁচলাইশ": ["মুরাদপুর", "ষোলশহর", "চান্দগাঁও"],
+                "হালিশহর": ["বড়পোল", "এল ব্লক", "কে ব্লক"],
+                "পতেঙ্গা": ["কাটগড়", "নৌবাহিনী এলাকা", "ইপিজেড"]
+            },
+            "সিলেট": {
+                "সিলেট সদর": ["জিন্দাবাজার", "বন্দরবাজার", "আম্বরখানা", "উপশহর"],
+                "গোলাপগঞ্জ": ["হেলালপুর", "বাঘা", "চৌমুহনী"],
+                "বিয়ানীবাজার": ["মৌলভী বাজার", "দুবাগ", "চারখাই"]
+            },
+            "রাজশাহী": {
+                "বোয়ালিয়া": ["কাদিরগঞ্জ", "رانی بازار", "মহাসীন রোড"],
+                "রাজপাড়া": ["লক্ষ্মীপুর", "জিআরপি কলোনি"],
+                "মতিহার": ["বিনোদপুর", "কাজলা", "বুধপাড়া"]
+            },
+            "খুলনা": {
+                "সদর থানা": ["শিয়াডাঙ্গা", "ময়লাপাড়া", "বড় বাজার"],
+                "সোনাডাঙ্গা": ["খলিলুর রহমান সড়ক", "বয়রা বাজার"],
+                "খালিশপুর": ["স্টীলমিল", "নয়াবাজার"]
+            },
+            "বরিশাল": {
+                "বরিশাল সদর": ["নাথুল্লাবাদ", "রূপাতলী", "কবির রোড"],
+                "বাকেরগঞ্জ": ["চরমোনাই", "দাড়িয়াপুর"],
+                "বাবুগঞ্জ": ["এয়ারপোর্ট রোড", "রহমতপুর"]
+            },
+            "রংপুর": {
+                "রংপুর সদর": ["জাহাজ কোম্পানি মোড়", "পীরজাবাদ", "শাপলা চত্বর"],
+                "মির্জাগঞ্জ": ["সৈয়দপুর রোড", "ভেন্ডাবাড়ী"],
+                "তারাগঞ্জ": ["কাকুরহাট", "কুর্শা"]
+            },
+            "ময়মনসিংহ": {
+                "কোতোয়ালী": ["চরপাড়া", "গাঙ্গিনার পাড়", "সাকুয়া"],
+                "ভালুকা": ["মাস্টারবাড়ি", "হাঁট্টি", "সিরাজগঞ্জ রোড"],
+                "ত্রিশাল": ["নান্দাইলের পাড়", "রামপুর"]
+            },
+            "কুমিল্লা": {
+                "কুমিল্লা আদর্শ সদর": ["কান্দিরপাড়", "টমসমব্রিজ", "রেসকোর্স"],
+                "ব্রাহ্মণপাড়া": ["শশীদল", "দুলালপুর"],
+                "চৌদ্দগ্রাম": ["मिया বাজার", "গুণবতী"]
+            },
+            "নোয়াখালী": {
+                "সুধারাম": ["মাইজদী কোর্ট", "টাউন হল", "বড় পুকুরপাড়"],
+                "বেগমগঞ্জ": ["চৌমুহনী", "একলাশপুর", "আমানউল্লাহপুর"],
+                "কোম্পানীগঞ্জ": ["বসুরহাট", "চরএলাহী"]
+            }
+        };
+
+        const allBangladeshDistricts = [
+            "ঢাকা", "চট্টগ্রাম", "সিলেট", "রাজশাহী", "খুলনা", "বরিশাল", "রংপুর", "ময়মনসিংহ", "কুমিল্লা", "নোয়াখালী",
+            "ফরিদপুর", "গাজীপুর", "গোপালগঞ্জ", "কিশোরগঞ্জ", "মাদারীপুর", "মানিকগঞ্জ", "মুন্সিগঞ্জ", "নারায়ণগঞ্জ", "নরসিংদী", "রাজবাড়ী", "শরীয়তপুর", "টাঙ্গাইল",
+            "বগুড়া", "জয়পুরহাট", "নওগাঁ", "নাটোর", "পাবনা", "সিরাজগঞ্জ", "চাঁপাইনবাবগঞ্জ",
+            "বাগেরহাট", "চুয়াডাঙ্গা", "যশোর", "ঝিনাইদহ", "খুলনা", "কুষ্টিয়া", "মাগুরা", "মেহেরপুর", "নড়াইল", "সাতক্ষীরা",
+            "বরগুনা", "ভোলা", "ঝালকাঠি", "পটুয়াখালী", "পিরোজপুর",
+            "দিনাজপুর", "গাইবান্ধা", "কুড়িগ্রাম", "লালমনিরহাট", "নীলফামারী", "পঞ্চগড়", "ঠাকুরগাঁও",
+            "হবিগঞ্জ", "মৌলভীবাজার", "সুনামগঞ্জ",
+            "বান্দরবান", "ব্রাহ্মণবাড়িয়া", "চাঁদপুর", "কক্সবাজার", "লক্ষ্মীপুর", "রাঙ্গামাটি", "খাগড়াছড়ি"
+        ];
+
+        function initDistrictsDropdown() {
+            const districtSelect = document.getElementById('custDistrict');
+            if(!districtSelect) return;
+            districtSelect.innerHTML = '<option value="">জেলা সিলেক্ট করুন</option>';
+            const uniqueDistricts = [...new Set(allBangladeshDistricts)];
+            uniqueDistricts.forEach(dist => {
+                districtSelect.innerHTML += `<option value="${dist}">${dist}</option>`;
+            });
+        }
+
+        function loadThanas() {
+            const dist = document.getElementById('custDistrict').value;
+            const thanaSelect = document.getElementById('custThana');
+            const unionSelect = document.getElementById('custUnion');
+            
+            thanaSelect.innerHTML = '<option value="">থানা/উপজেলা সিলেক্ট করুন</option>';
+            unionSelect.innerHTML = '<option value="">প্রথমে থানা সিলেক্ট করুন</option>';
+
+            if(!dist) return;
+
+            if(bdDistrictsData[dist]) {
+                const thanas = Object.keys(bdDistrictsData[dist]);
+                thanas.forEach(th => {
+                    thanaSelect.innerHTML += `<option value="${th}">${th}</option>`;
+                });
+            } else {
+                thanaSelect.innerHTML += `<option value="${dist} সদর">${dist} সদর</option>`;
+                thanaSelect.innerHTML += `<option value="${dist} উত্তর উপজেলা">উত্তর উপজেলা</option>`;
+                thanaSelect.innerHTML += `<option value="${dist} দক্ষিণ উপজেলা">দক্ষিণ উপজেলা</option>`;
+            }
+        }
+
+        function loadUnions() {
+            const dist = document.getElementById('custDistrict').value;
+            const thana = document.getElementById('custThana').value;
+            const unionSelect = document.getElementById('custUnion');
+            
+            unionSelect.innerHTML = '<option value="">ইউনিয়ন / এলাকা সিলেক্ট করুন</option>';
+
+            if(!thana) return;
+
+            if(bdDistrictsData[dist] && bdDistrictsData[dist][thana]) {
+                const unions = bdDistrictsData[dist][thana];
+                unions.forEach(un => {
+                    unionSelect.innerHTML += `<option value="${un}">${un}</option>`;
+                });
+            } else {
+                unionSelect.innerHTML += `<option value="কেন্দ্রীয় এলাকা">কেন্দ্রীয় এলাকা / পৌরসভা</option>`;
+                unionSelect.innerHTML += `<option value="১নং ওয়ার্ড">১নং ওয়ার্ড</option>`;
+                unionSelect.innerHTML += `<option value="২নং ওয়ার্ড">২নং ওয়ার্ড</option>`;
+                unionSelect.innerHTML += `<option value="৩নং ওয়ার্ড">৩নং ওয়ার্ড</option>`;
+            }
+        }
+
+        // Toggle Help Center Widget Popup
+        function toggleHelpCenter() {
+            const popup = document.getElementById('helpCenterPopup');
+            popup.classList.toggle('hidden');
+        }
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-item');
         function showNextSlide() {
@@ -506,12 +662,6 @@
             slides[currentSlide].classList.add('active');
         }
         setInterval(showNextSlide, 3000);
-
-        // Help Center Menu Toggle Function
-        function toggleHelpMenu() {
-            const menu = document.getElementById('helpMenuPopup');
-            menu.classList.toggle('hidden');
-        }
 
         let defaultCategories = [
             { id: 'sunglass', name: 'সানগ্লাস', icon: 'fa-glasses' },
@@ -539,6 +689,7 @@
 
         window.onload = function() {
             loadSavedSiteSettings();
+            initDistrictsDropdown();
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('admin') === 'owner' || localStorage.getItem('isSecretAdminLoggedIn') === 'true') {
                 document.getElementById('secretAdminSection').classList.remove('hidden');
@@ -591,34 +742,22 @@
 
             if(logoFile) {
                 const reader = new FileReader();
-                reader.onloadend = function() {
-                    settings.logo = reader.result;
-                    checkDone();
-                }
+                reader.onloadend = function() { settings.logo = reader.result; checkDone(); }
                 reader.readAsDataURL(logoFile);
             }
             if(b1File) {
                 const reader = new FileReader();
-                reader.onloadend = function() {
-                    settings.banner1 = reader.result;
-                    checkDone();
-                }
+                reader.onloadend = function() { settings.banner1 = reader.result; checkDone(); }
                 reader.readAsDataURL(b1File);
             }
             if(b2File) {
                 const reader = new FileReader();
-                reader.onloadend = function() {
-                    settings.banner2 = reader.result;
-                    checkDone();
-                }
+                reader.onloadend = function() { settings.banner2 = reader.result; checkDone(); }
                 reader.readAsDataURL(b2File);
             }
             if(b3File) {
                 const reader = new FileReader();
-                reader.onloadend = function() {
-                    settings.banner3 = reader.result;
-                    checkDone();
-                }
+                reader.onloadend = function() { settings.banner3 = reader.result; checkDone(); }
                 reader.readAsDataURL(b3File);
             }
 
@@ -642,19 +781,25 @@
             }
         }
 
-        // সিকিউরড অ্যাডমিন ভেরিফিকেশন
+        const encodedAdminEmail = "VGFudmVyZXZhbjc4MWdtYWlsLmNvbQ==";
+        const encodedAdminPass = "VGFudmlyQDc4MSM=";
+
         function verifyAdminLogin() {
             const enteredEmail = document.getElementById('adminEmailInput').value.trim();
             const enteredPassword = document.getElementById('adminPasswordInput').value.trim();
 
-            const correctEmail = "Tanvverevan781@gmail.com";
-            const correctPassword = "Tanvir@781#";
+            try {
+                const decodedEmail = atob(encodedAdminEmail).replace('gmail.com', '@gmail.com');
+                const decodedPass = atob(encodedAdminPass);
 
-            if (enteredEmail === correctEmail && enteredPassword === correctPassword) {
-                localStorage.setItem('isSecretAdminLoggedIn', 'true');
-                showAdminUploadPanel();
-            } else {
-                alert("ভুল ইমেইল অথবা পাসওয়ার্ড! সঠিক তথ্য প্রদান করুন।");
+                if (enteredEmail === decodedEmail && enteredPassword === decodedPass) {
+                    localStorage.setItem('isSecretAdminLoggedIn', 'true');
+                    showAdminUploadPanel();
+                } else {
+                    alert("ভুল ইমেইল অথবা পাসওয়ার্ড! সঠিক তথ্য প্রদান করুন।");
+                }
+            } catch (e) {
+                alert("ভেরিফিকেশন ত্রুটি ঘটেছে!");
             }
         }
 
@@ -732,10 +877,8 @@
         }
 
         function getAllProducts() {
-            let deletedDefaults = JSON.parse(localStorage.getItem('siteDeletedDefaultIds')) || [];
-            let activeDefaults = defaultProducts.filter(p => !deletedDefaults.includes(p.id));
             let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            return [...activeDefaults, ...customProducts];
+            return [...defaultProducts, ...customProducts];
         }
 
         let adminTempImages = ['', '', ''];
@@ -761,12 +904,12 @@
             const category = document.getElementById('adminProductCategory').value;
 
             if(!name || !price || !desc || !adminTempImages[0]) {
-                alert('দয়া করে প্রোডাক্টের নাম, বিবরণ, দাম এবং অন্তত ১ম ছবি (প্রধান ছবি) দিন!');
+                alert('দয়া করে প্রোডাক্টের নাম, বিবরণ, দাম এবং অন্তত ১ম ছবি দিন!');
                 return;
             }
 
             const newProduct = {
-                id: 'cust_' + Date.now(),
+                id: Date.now(),
                 title: name,
                 description: desc,
                 category: category,
@@ -787,42 +930,36 @@
                 const fileElem = document.getElementById(`adminImg${i}`);
                 if(fileElem) fileElem.value = '';
                 const prevElem = document.getElementById(`preview${i}`);
-                if(prevElem) {
-                    prevElem.src = '';
-                    prevElem.classList.add('hidden');
-                }
+                if(prevElem) { prevElem.src = ''; prevElem.classList.add('hidden'); }
             }
             adminTempImages = ['', '', ''];
 
-            // লাইভ রেন্ডার এবং ইনস্ট্যান্ট স্ক্রল
             renderAllSections();
             renderAdminAddedProductsList();
-            window.location.href = `#section-${category}`;
         }
 
         function renderAdminAddedProductsList() {
             const listContainer = document.getElementById('adminAddedProductsList');
             if(!listContainer) return;
-            const allProds = getAllProducts();
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
             
-            if(allProds.length === 0) {
-                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো প্রোডাক্ট নেই।</p>';
+            if(customProducts.length === 0) {
+                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো কাস্টম প্রোডাক্ট যোগ করা হয়নি।</p>';
                 return;
             }
 
             listContainer.innerHTML = '';
-            allProds.forEach((prod) => {
-                let isDefault = typeof prod.id === 'number';
+            customProducts.forEach((prod) => {
                 listContainer.innerHTML += `
                     <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl border border-gray-100">
                         <div class="flex items-center gap-3">
-                            <img src="${prod.images[0] || 'https://via.placeholder.com/40'}" class="w-10 h-10 rounded-lg object-cover">
+                            <img src="${prod.images[0]}" class="w-10 h-10 rounded-lg object-cover">
                             <div>
-                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title} ${isDefault ? '<span class="text-[9px] bg-blue-100 text-blue-600 px-1.5 py-0.2 rounded">ডিফল্ট</span>' : ''}</p>
+                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title}</p>
                                 <p class="text-[10px] text-brand-orange font-bold">৳ ${prod.price} (${prod.category})</p>
                             </div>
                         </div>
-                        <button onclick="deleteAnyProduct('${prod.id}')" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1">
+                        <button onclick="deleteCustomProduct(${prod.id})" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1">
                             <i class="fa-solid fa-trash-can"></i> রিমুভ
                         </button>
                     </div>
@@ -830,21 +967,11 @@
             });
         }
 
-        function deleteAnyProduct(id) {
+        function deleteCustomProduct(id) {
             if(!confirm('আপনি কি নিশ্চিতভাবে এই প্রোডাক্টটি রিমুভ করতে চান?')) return;
-            
-            if(typeof id === 'number') {
-                let deletedDefaults = JSON.parse(localStorage.getItem('siteDeletedDefaultIds')) || [];
-                if(!deletedDefaults.includes(id)) {
-                    deletedDefaults.push(id);
-                    localStorage.setItem('siteDeletedDefaultIds', JSON.stringify(deletedDefaults));
-                }
-            } else {
-                let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-                customProducts = customProducts.filter(p => p.id !== id);
-                localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
-            }
-
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            customProducts = customProducts.filter(p => p.id !== id);
+            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
             renderAllSections();
             renderAdminAddedProductsList();
             alert('প্রোডাক্ট সফলভাবে রিমুভ করা হয়েছে!');
@@ -867,18 +994,18 @@
                     filtered.forEach(product => {
                         productsHtml += `
                             <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
-                                <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="openProductDetails('${product.id}')">
+                                <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="openProductDetails(${product.id})">
                                     <img src="${product.images[0]}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition duration-300">
                                     <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/85 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full font-bold uppercase">${cat.name}</span>
                                 </div>
                                 <div class="flex-1 flex flex-col justify-between">
-                                    <h4 onclick="openProductDetails('${product.id}')" class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1 cursor-pointer hover:text-brand-orange transition">${product.title}</h4>
+                                    <h4 onclick="openProductDetails(${product.id})" class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1 cursor-pointer hover:text-brand-orange transition">${product.title}</h4>
                                     <div class="mt-2">
                                         <div class="flex items-center gap-2 mb-2">
                                             <p class="text-brand-orange font-black text-sm md:text-base">৳ ${product.price}</p>
                                             ${product.oldPrice ? `<p class="text-gray-400 text-xs line-through">৳ ${product.oldPrice}</p>` : ''}
                                         </div>
-                                        <button onclick="addToCart('${product.id}')" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                                        <button onclick="addToCart(${product.id})" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
                                             <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
                                         </button>
                                     </div>
@@ -911,7 +1038,7 @@
 
         function openProductDetails(id) {
             const allProds = getAllProducts();
-            const prod = allProds.find(p => p.id == id);
+            const prod = allProds.find(p => p.id === id);
             if(!prod) return;
 
             let validImgs = prod.images.filter(img => img && img.trim() !== "");
@@ -938,7 +1065,7 @@
                         </div>
                         <p class="text-xs text-gray-600 leading-relaxed mt-2 whitespace-pre-line">${prod.description || 'কোনো বিবরণ দেওয়া হয়নি।'}</p>
                     </div>
-                    <button onclick="addToCart('${prod.id}'); closeProductDetailsModal();" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <button onclick="addToCart(${prod.id}); closeProductDetailsModal();" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
                     </button>
                 </div>
@@ -946,19 +1073,14 @@
             document.getElementById('productDetailsModal').classList.remove('hidden');
         }
 
-        function changeMainViewImage(src) {
-            document.getElementById('mainDetailImage').src = src;
-        }
-
-        function closeProductDetailsModal() {
-            document.getElementById('productDetailsModal').classList.add('hidden');
-        }
+        function changeMainViewImage(src) { document.getElementById('mainDetailImage').src = src; }
+        function closeProductDetailsModal() { document.getElementById('productDetailsModal').classList.add('hidden'); }
 
         function toggleCart() { document.getElementById('cartModal').classList.toggle('hidden'); }
         
         function addToCart(id) {
             const allProds = getAllProducts();
-            const item = allProds.find(p => p.id == id);
+            const item = allProds.find(p => p.id === id);
             if(item) { cart.push(item); updateCart(); toggleCart(); }
         }
 
@@ -995,11 +1117,11 @@
         function closeLoginModal() { document.getElementById('loginModal').classList.add('hidden'); }
         
         function loginWithGoogle() {
-            loggedInUser = { name: "গ্রাহক রাজু", email: "user@gmail.com" };
+            loggedInUser = { name: "গ্রাহক", email: "user@gmail.com" };
             localStorage.setItem('siteLoggedInUser', JSON.stringify(loggedInUser));
             checkLoginState();
             closeLoginModal();
-            alert("Google অ্যাকাউন্টের মাধ্যমে সফলভাবে সাইন ইন করা হয়েছে!");
+            alert("সফলভাবে সাইন ইন করা হয়েছে!");
         }
 
         function openMyOrdersModal() {
@@ -1018,7 +1140,7 @@
                                 <span class="text-brand-orange">৳ ${ord.total}</span>
                             </div>
                             <p class="text-gray-600">পণ্য: ${ord.itemsSummary}</p>
-                            <p class="text-gray-500">ডেলিভারি ঠিকানা: ${ord.address} (${ord.phone})</p>
+                            <p class="text-gray-500">ঠিকানা: ${ord.fullAddress} (${ord.phone})</p>
                             <span class="inline-block bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-bold text-[10px]">সফলভাবে অর্ডারকৃত</span>
                         </div>
                     `;
@@ -1027,9 +1149,7 @@
             document.getElementById('myOrdersModal').classList.remove('hidden');
         }
 
-        function closeMyOrdersModal() {
-            document.getElementById('myOrdersModal').classList.add('hidden');
-        }
+        function closeMyOrdersModal() { document.getElementById('myOrdersModal').classList.add('hidden'); }
 
         function openCheckoutModal() {
             if(cart.length === 0) { alert("আপনার কার্টে কোনো প্রোডাক্ট নেই!"); return; }
@@ -1045,9 +1165,13 @@
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
             const district = document.getElementById('custDistrict').value;
+            const thana = document.getElementById('custThana').value;
+            const union = document.getElementById('custUnion').value;
             const area = document.getElementById('custArea').value;
-            const address = document.getElementById('custAddress').value.trim();
+            const detailAddress = document.getElementById('custAddress').value.trim();
             const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+            const fullAddressText = `${detailAddress}, ইউনিয়ন: ${union}, থানা: ${thana}, জেলা: ${district}`;
 
             let productDetails = "";
             let itemsSummaryStr = "";
@@ -1058,7 +1182,7 @@
                 itemsSummaryStr += item.title + (index < cart.length - 1 ? ", " : "");
             });
 
-            let deliveryCharge = area.includes('বাইরে') ? 120 : 60;
+            let deliveryCharge = area.includes('ভেতরে') ? 60 : 120;
             let grandTotal = subtotal + deliveryCharge;
 
             let savedOrders = JSON.parse(localStorage.getItem('siteUserOrders')) || [];
@@ -1066,7 +1190,7 @@
                 date: new Date().toLocaleDateString('bn-BD'),
                 itemsSummary: itemsSummaryStr,
                 total: grandTotal,
-                address: address,
+                fullAddress: fullAddressText,
                 phone: phone
             });
             localStorage.setItem('siteUserOrders', JSON.stringify(savedOrders));
@@ -1079,7 +1203,9 @@
                                     `👤 *কাস্টমারের নাম:* ${name}%0A` +
                                     `📞 *ফোন নাম্বার:* ${phone}%0A` +
                                     `📍 *জেলা:* ${district}%0A` +
-                                    `🏠 *সম্পূর্ণ ঠিকানা:* ${address}%0A` +
+                                    `🏛️ *থানা/উপজেলা:* ${thana}%0A` +
+                                    `🌾 *ইউনিয়ন/এলাকা:* ${union}%0A` +
+                                    `🏠 *বিস্তারিত ঠিকানা:* ${detailAddress}%0A` +
                                     `💳 *পেমেন্ট পদ্ধতি:* ${paymentMethod}%0A%0A` +
                                     `দয়া করে অর্ডারটি কনফার্ম করুন।`;
 
