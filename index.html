@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogeAchi.com - এক ক্লিকে সবকিছু</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -69,6 +72,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-orange selection:text-white">
 
+    <!-- Top Announcement Bar -->
     <div class="bg-brand-dark text-white text-xs py-2 px-4 border-b border-orange-500/20">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
@@ -86,6 +90,7 @@
         </div>
     </div>
 
+    <!-- Header / Navbar -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <a href="#" class="flex items-center gap-3 group">
@@ -120,6 +125,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="bg-gradient-to-b from-brand-dark via-slate-900 to-brand-dark text-white py-8 md:py-12 px-4 mb-12 overflow-hidden relative">
         <div class="container mx-auto max-w-3xl text-center">
             <div class="flex flex-col items-center justify-center mb-4">
@@ -163,6 +169,7 @@
         </div>
     </section>
 
+    <!-- Categories Shortcut Navigation -->
     <section class="container mx-auto px-4 mb-12">
         <h3 class="text-xl font-bold mb-6 text-brand-dark border-l-4 border-brand-orange pl-3">ক্যাটাগরি সমূহ</h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -189,6 +196,7 @@
         </div>
     </section>
 
+    <!-- Main Products Sections -->
     <main class="container mx-auto px-4 mb-20 space-y-16">
         <section id="sunglass-section">
             <div class="flex justify-between items-center mb-6 border-b pb-3 border-gray-200">
@@ -241,9 +249,11 @@
         </section>
     </main>
 
+    <!-- Hidden Secret Admin Section (সাধারণ ইউজারদের জন্য এটি সম্পূর্ণ অদৃশ্য থাকবে) -->
     <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
         <div class="max-w-xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
             
+            <!-- Step 1: Secret Login Gate -->
             <div id="adminLoginGate" class="text-center py-6">
                 <div class="w-14 h-14 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fa-solid fa-user-shield"></i>
@@ -265,6 +275,7 @@
                 </div>
             </div>
 
+            <!-- Step 2: Actual Admin Upload Panel -->
             <div id="adminPanelContent" class="hidden">
                 <div class="flex justify-between items-center mb-6 border-b pb-4">
                     <div class="flex items-center gap-3">
@@ -276,7 +287,7 @@
                             <p class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> সফলভাবে লগইন করা হয়েছে</p>
                         </div>
                     </div>
-                    <button onclick="hideAdminPanel()" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition">বন্ধ করুন</button>
+                    <button onclick="hideAdminPanel()" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition">লগআউট</button>
                 </div>
 
                 <div class="space-y-4">
@@ -309,11 +320,18 @@
                         প্রোডাক্ট ওয়েবসাইটে পাবলিশ করুন
                     </button>
                 </div>
+
+                <!-- Admin Added Products Management List -->
+                <div class="mt-8 pt-6 border-t border-gray-100">
+                    <h4 class="font-bold text-sm text-brand-dark mb-3">আপনার আপলোডকৃত অতিরিক্ত প্রোডাক্টসমূহ:</h4>
+                    <div id="adminAddedProductsList" class="space-y-2 max-h-48 overflow-y-auto"></div>
+                </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Shopping Cart Modal -->
     <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
         <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
             <div>
@@ -333,6 +351,7 @@
         </div>
     </div>
 
+    <!-- Google Login Modal -->
     <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl border border-gray-100">
             <button onclick="closeLoginModal()" class="absolute right-4 top-4 text-gray-400 hover:text-black font-bold text-xl">&times;</button>
@@ -347,6 +366,7 @@
         </div>
     </div>
 
+    <!-- Checkout Modal -->
     <div id="checkoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 my-8 shadow-2xl relative">
             <div class="flex justify-between items-center mb-6 border-b pb-3">
@@ -401,6 +421,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-12 pb-6 border-t-4 border-brand-orange">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -427,6 +448,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-item');
@@ -454,14 +476,14 @@
 
         let cart = [];
 
-        // আপনার দেওয়া আসল ইমেইল এবং পাসওয়ার্ড সেট করা হলো
         const MY_ADMIN_EMAIL = "Tanvverevan781@gmail.com";
         const MY_ADMIN_PASS = "logeachi.com781781";
 
-        // পেজ লোড হলে চেক করা হবে
+        // পেজ লোড হলে চেক করা হবে অ্যাডমিন মোড অন আছে কি না
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             
+            // যদি ইউআরএলে admin=owner থাকে অথবা ব্রাউজারে আগে থেকেই লগইন করা থাকে
             if (urlParams.get('admin') === 'owner' || localStorage.getItem('isSecretAdminLoggedIn') === 'true') {
                 document.getElementById('secretAdminSection').classList.remove('hidden');
                 
@@ -470,9 +492,10 @@
                 }
             }
             renderAllSections();
+            renderAdminAddedProductsList();
         }
 
-        // ইমেইল ও পাসওয়ার্ড যাচাই করার ফাংশন
+        // ইমেইল ও পাসওয়ার্ড যাচাই ফাংশন
         function verifyAdminLogin() {
             const enteredEmail = document.getElementById('adminEmailInput').value.trim();
             const enteredPass = document.getElementById('adminPasswordInput').value.trim();
@@ -488,16 +511,15 @@
         function showAdminUploadPanel() {
             document.getElementById('adminLoginGate').classList.add('hidden');
             document.getElementById('adminPanelContent').classList.remove('hidden');
+            renderAdminAddedProductsList();
         }
 
         function hideAdminPanel() {
             localStorage.removeItem('isSecretAdminLoggedIn');
-            document.getElementById('secretAdminSection').classList.add('hidden');
             document.getElementById('adminPanelContent').classList.add('hidden');
             document.getElementById('adminLoginGate').classList.remove('hidden');
             document.getElementById('adminEmailInput').value = '';
             document.getElementById('adminPasswordInput').value = '';
-            window.location.href = window.location.pathname;
         }
 
         function getAllProducts() {
@@ -521,7 +543,7 @@
                         <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
                             <div class="relative overflow-hidden rounded-xl mb-3">
                                 <img src="${product.image}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl">
-                                <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/80 backdrop-blur-md text-white px-2 py-0.5 rounded-full font-bold uppercase">${product.category}</span>
+                                <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/85 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full font-bold uppercase">${product.category}</span>
                             </div>
                             <div class="flex-1 flex flex-col justify-between">
                                 <h4 class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1">${product.title}</h4>
@@ -558,8 +580,8 @@
         }
 
         function addNewProductToSite() {
-            const name = document.getElementById('adminProductName').value;
-            const price = document.getElementById('adminProductPrice').value;
+            const name = document.getElementById('adminProductName').value.trim();
+            const price = document.getElementById('adminProductPrice').value.trim();
             const category = document.getElementById('adminProductCategory').value;
             const image = document.getElementById('adminImagePreview').src;
 
@@ -582,6 +604,8 @@
             localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
 
             alert('প্রোডাক্ট সফলভাবে ওয়েবসাইটে যোগ করা হয়েছে!');
+            
+            // ইনপুট ফিল্ড ক্লিয়ার করা
             document.getElementById('adminProductName').value = '';
             document.getElementById('adminProductPrice').value = '';
             document.getElementById('adminProductImage').value = '';
@@ -589,7 +613,43 @@
             document.getElementById('adminImagePreview').classList.add('hidden');
 
             renderAllSections();
-            window.location.hash = `#${category}-section`;
+            renderAdminAddedProductsList();
+        }
+
+        function renderAdminAddedProductsList() {
+            const listContainer = document.getElementById('adminAddedProductsList');
+            if(!listContainer) return;
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            
+            if(customProducts.length === 0) {
+                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো কাস্টম প্রোডাক্ট যোগ করা হয়নি।</p>';
+                return;
+            }
+
+            listContainer.innerHTML = '';
+            customProducts.forEach((prod, index) => {
+                listContainer.innerHTML += `
+                    <div class="flex items-center justify-between bg-gray-50 p-2 rounded-xl border border-gray-100">
+                        <div class="flex items-center gap-2">
+                            <img src="${prod.image}" class="w-8 h-8 rounded-lg object-cover">
+                            <div>
+                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title}</p>
+                                <p class="text-[10px] text-brand-orange font-bold">৳ ${prod.price} (${prod.category})</p>
+                            </div>
+                        </div>
+                        <button onclick="deleteCustomProduct(${prod.id})" class="text-xs text-red-500 hover:bg-red-50 p-1.5 rounded-lg transition"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteCustomProduct(id) {
+            if(!confirm('আপনি কি এই প্রোডাক্টটি মুছে ফেলতে চান?')) return;
+            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            customProducts = customProducts.filter(p => p.id !== id);
+            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+            renderAllSections();
+            renderAdminAddedProductsList();
         }
 
         function toggleCart() { document.getElementById('cartModal').classList.toggle('hidden'); }
