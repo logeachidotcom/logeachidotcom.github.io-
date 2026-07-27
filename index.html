@@ -181,25 +181,61 @@
     <!-- Main Products Sections Container -->
     <main id="dynamic-sections-container" class="container mx-auto px-4 mb-20 space-y-16"></main>
 
+    <!-- Floating Help Center / Live Support Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Help Options Menu Popup -->
+        <div id="helpMenuPopup" class="hidden absolute bottom-16 right-0 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 w-64 mb-2 transition transform origin-bottom-right">
+            <div class="flex justify-between items-center mb-2 pb-2 border-b border-gray-100">
+                <span class="text-xs font-bold text-brand-dark flex items-center gap-1.5">
+                    <i class="fa-solid fa-headset text-brand-orange"></i> হেল্প সেন্টার ও সাপোর্ট
+                </span>
+                <button onclick="toggleHelpMenu()" class="text-gray-400 hover:text-black text-sm font-bold">&times;</button>
+            </div>
+            <p class="text-[11px] text-gray-500 mb-3">যেকোনো প্রয়োজনে আমাদের সাথে চ্যাট করুন:</p>
+            <div class="space-y-2">
+                <a href="https://wa.me/966579516277" target="_blank" class="flex items-center gap-3 bg-green-50 hover:bg-green-100 text-green-700 p-2.5 rounded-xl font-bold text-xs transition border border-green-200">
+                    <div class="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center text-base"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div>
+                        <p class="leading-tight">হোয়াটসঅ্যাপ (WhatsApp)</p>
+                        <span class="text-[10px] text-green-600 font-normal">২৪ ঘণ্টা অনলাইন</span>
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/logeachidotcom781" target="_blank" class="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 text-blue-700 p-2.5 rounded-xl font-bold text-xs transition border border-blue-200">
+                    <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center text-base"><i class="fa-brands fa-facebook-messenger"></i></div>
+                    <div>
+                        <p class="leading-tight">মেসেঞ্জার (Messenger)</p>
+                        <span class="text-[10px] text-blue-600 font-normal">পেজে মেসেজ পাঠান</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Toggle Button -->
+        <button onclick="toggleHelpMenu()" class="bg-gradient-to-r from-brand-orange to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl transition hover:scale-110 relative group">
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white badge-pulse">💬</span>
+            <i class="fa-solid fa-headset"></i>
+        </button>
+    </div>
+
     <!-- Secret Admin Section (Accessible via ?admin=owner) -->
     <section id="secretAdminSection" class="container mx-auto px-4 mb-20 hidden">
         <div class="max-w-2xl mx-auto bg-white border-2 border-orange-500/30 rounded-3xl p-6 shadow-xl">
             
-            <!-- Step 1: Secret Login Gate (Blank inputs with no placeholder hints) -->
+            <!-- Step 1: Secure Admin Login Gate -->
             <div id="adminLoginGate" class="text-center py-6">
                 <div class="w-14 h-14 bg-orange-50 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                     <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <h3 class="text-lg font-bold text-brand-dark mb-1">অ্যাডমিন ভেরিফিকেশন</h3>
-                <p class="text-xs text-gray-500 mb-6">আপনার সিক্রেট তথ্য প্রদান করুন</p>
+                <p class="text-xs text-gray-500 mb-6">আপনার সিক্রেট ইমেল ও পাসওয়ার্ড প্রদান করুন</p>
                 <div class="space-y-3 max-w-sm mx-auto text-left">
                     <div>
                         <label class="block text-[11px] font-bold text-gray-600 mb-1">অ্যাডমিন ইমেইল</label>
-                        <input type="email" id="adminEmailInput" autocomplete="off" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <input type="email" id="adminEmailInput" placeholder="Tanvverevan781@gmail.com" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-gray-600 mb-1">পাসওয়ার্ড</label>
-                        <input type="password" id="adminPasswordInput" autocomplete="new-password" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
+                        <input type="password" id="adminPasswordInput" placeholder="********" class="w-full border border-gray-200 p-3 rounded-xl text-sm focus:border-brand-orange focus:outline-none">
                     </div>
                     <button onclick="verifyAdminLogin()" class="w-full bg-brand-dark hover:bg-brand-orange text-white py-3 rounded-xl font-bold text-sm transition shadow-md mt-2">
                         লগইন করুন
@@ -216,7 +252,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-brand-dark">ওয়েবসাইট কন্ট্রোল ও ম্যানেজমেন্ট প্যানেল</h3>
-                            <p class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> ফুল অ্যাক্সেস অ্যাপ্রুভড</p>
+                            <p class="text-xs text-emerald-600 font-bold"><i class="fa-solid fa-circle-check"></i> সিক্যুরড অ্যাডমিন মোড</p>
                         </div>
                     </div>
                     <button onclick="hideAdminPanel()" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition">লগআউট</button>
@@ -310,10 +346,11 @@
                     </button>
                 </div>
 
-                <!-- Admin Added Products Management List -->
+                <!-- All Products Management List (Default + Custom Edit/Delete Control) -->
                 <div class="mt-8 pt-6 border-t border-gray-100">
-                    <h4 class="font-bold text-sm text-brand-dark mb-3"><i class="fa-solid fa-list-check text-brand-orange"></i> আপলোডকৃত প্রোডাক্ট ম্যানেজমেন্ট (রিমুভ করুন):</h4>
-                    <div id="adminAddedProductsList" class="space-y-2 max-h-56 overflow-y-auto"></div>
+                    <h4 class="font-bold text-sm text-brand-dark mb-1"><i class="fa-solid fa-list-check text-brand-orange"></i> সকল প্রোডাক্ট ম্যানেজমেন্ট (এডিট ও ডিলিট):</h4>
+                    <p class="text-[11px] text-gray-500 mb-3">আপনি চাইলে আগের ডিফল্ট ও নতুন যেকোনো আইটেম রিমুভ করতে পারবেন।</p>
+                    <div id="adminAddedProductsList" class="space-y-2 max-h-64 overflow-y-auto"></div>
                 </div>
             </div>
 
@@ -468,7 +505,13 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(showNextSlide, 1000);
+        setInterval(showNextSlide, 3000);
+
+        // Help Center Menu Toggle Function
+        function toggleHelpMenu() {
+            const menu = document.getElementById('helpMenuPopup');
+            menu.classList.toggle('hidden');
+        }
 
         let defaultCategories = [
             { id: 'sunglass', name: 'সানগ্লাস', icon: 'fa-glasses' },
@@ -493,10 +536,6 @@
 
         let cart = [];
         let loggedInUser = localStorage.getItem('siteLoggedInUser') ? JSON.parse(localStorage.getItem('siteLoggedInUser')) : null;
-
-        // নতুন এবং গোপন অ্যাডমিন ক্রেডেনশিয়াল
-        const MY_ADMIN_EMAIL = "Tanvverevan781@gmail.com";
-        const MY_ADMIN_PASS = "Tanvir@781#";
 
         window.onload = function() {
             loadSavedSiteSettings();
@@ -603,15 +642,19 @@
             }
         }
 
+        // সিকিউরড অ্যাডমিন ভেরিফিকেশন
         function verifyAdminLogin() {
-            const enteredEmail = document.getElementById('adminEmailInput').value.trim().toLowerCase();
-            const enteredPass = document.getElementById('adminPasswordInput').value.trim();
+            const enteredEmail = document.getElementById('adminEmailInput').value.trim();
+            const enteredPassword = document.getElementById('adminPasswordInput').value.trim();
 
-            if (enteredEmail === MY_ADMIN_EMAIL.toLowerCase() && enteredPass === MY_ADMIN_PASS) {
+            const correctEmail = "Tanvverevan781@gmail.com";
+            const correctPassword = "Tanvir@781#";
+
+            if (enteredEmail === correctEmail && enteredPassword === correctPassword) {
                 localStorage.setItem('isSecretAdminLoggedIn', 'true');
                 showAdminUploadPanel();
             } else {
-                alert('ভুল ইমেইল অথবা পাসওয়ার্ড! সঠিক তথ্য প্রদান করুন।');
+                alert("ভুল ইমেইল অথবা পাসওয়ার্ড! সঠিক তথ্য প্রদান করুন।");
             }
         }
 
@@ -689,8 +732,10 @@
         }
 
         function getAllProducts() {
+            let deletedDefaults = JSON.parse(localStorage.getItem('siteDeletedDefaultIds')) || [];
+            let activeDefaults = defaultProducts.filter(p => !deletedDefaults.includes(p.id));
             let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            return [...defaultProducts, ...customProducts];
+            return [...activeDefaults, ...customProducts];
         }
 
         let adminTempImages = ['', '', ''];
@@ -721,7 +766,7 @@
             }
 
             const newProduct = {
-                id: Date.now(),
+                id: 'cust_' + Date.now(),
                 title: name,
                 description: desc,
                 category: category,
@@ -749,32 +794,35 @@
             }
             adminTempImages = ['', '', ''];
 
+            // লাইভ রেন্ডার এবং ইনস্ট্যান্ট স্ক্রল
             renderAllSections();
             renderAdminAddedProductsList();
+            window.location.href = `#section-${category}`;
         }
 
         function renderAdminAddedProductsList() {
             const listContainer = document.getElementById('adminAddedProductsList');
             if(!listContainer) return;
-            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+            const allProds = getAllProducts();
             
-            if(customProducts.length === 0) {
-                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো কাস্টম প্রোডাক্ট যোগ করা হয়নি।</p>';
+            if(allProds.length === 0) {
+                listContainer.innerHTML = '<p class="text-xs text-gray-400">এখনো কোনো প্রোডাক্ট নেই।</p>';
                 return;
             }
 
             listContainer.innerHTML = '';
-            customProducts.forEach((prod) => {
+            allProds.forEach((prod) => {
+                let isDefault = typeof prod.id === 'number';
                 listContainer.innerHTML += `
                     <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl border border-gray-100">
                         <div class="flex items-center gap-3">
-                            <img src="${prod.images[0]}" class="w-10 h-10 rounded-lg object-cover">
+                            <img src="${prod.images[0] || 'https://via.placeholder.com/40'}" class="w-10 h-10 rounded-lg object-cover">
                             <div>
-                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title}</p>
+                                <p class="text-xs font-bold text-gray-800 line-clamp-1">${prod.title} ${isDefault ? '<span class="text-[9px] bg-blue-100 text-blue-600 px-1.5 py-0.2 rounded">ডিফল্ট</span>' : ''}</p>
                                 <p class="text-[10px] text-brand-orange font-bold">৳ ${prod.price} (${prod.category})</p>
                             </div>
                         </div>
-                        <button onclick="deleteCustomProduct(${prod.id})" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1">
+                        <button onclick="deleteAnyProduct('${prod.id}')" class="text-xs bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1">
                             <i class="fa-solid fa-trash-can"></i> রিমুভ
                         </button>
                     </div>
@@ -782,11 +830,21 @@
             });
         }
 
-        function deleteCustomProduct(id) {
-            if(!confirm('আপনি কি নিশ্চিতভাবে এই প্রোডাক্টটি ওয়েবসাইট থেকে রিমুভ করতে চান?')) return;
-            let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
-            customProducts = customProducts.filter(p => p.id !== id);
-            localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+        function deleteAnyProduct(id) {
+            if(!confirm('আপনি কি নিশ্চিতভাবে এই প্রোডাক্টটি রিমুভ করতে চান?')) return;
+            
+            if(typeof id === 'number') {
+                let deletedDefaults = JSON.parse(localStorage.getItem('siteDeletedDefaultIds')) || [];
+                if(!deletedDefaults.includes(id)) {
+                    deletedDefaults.push(id);
+                    localStorage.setItem('siteDeletedDefaultIds', JSON.stringify(deletedDefaults));
+                }
+            } else {
+                let customProducts = JSON.parse(localStorage.getItem('siteCustomProducts')) || [];
+                customProducts = customProducts.filter(p => p.id !== id);
+                localStorage.setItem('siteCustomProducts', JSON.stringify(customProducts));
+            }
+
             renderAllSections();
             renderAdminAddedProductsList();
             alert('প্রোডাক্ট সফলভাবে রিমুভ করা হয়েছে!');
@@ -809,18 +867,18 @@
                     filtered.forEach(product => {
                         productsHtml += `
                             <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 product-card flex flex-col justify-between p-3">
-                                <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="openProductDetails(${product.id})">
+                                <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="openProductDetails('${product.id}')">
                                     <img src="${product.images[0]}" alt="${product.title}" class="w-full h-40 object-cover rounded-xl hover:scale-105 transition duration-300">
                                     <span class="absolute top-2 left-2 text-[9px] bg-brand-dark/85 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full font-bold uppercase">${cat.name}</span>
                                 </div>
                                 <div class="flex-1 flex flex-col justify-between">
-                                    <h4 onclick="openProductDetails(${product.id})" class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1 cursor-pointer hover:text-brand-orange transition">${product.title}</h4>
+                                    <h4 onclick="openProductDetails('${product.id}')" class="font-bold text-xs md:text-sm text-gray-800 line-clamp-2 mb-1 cursor-pointer hover:text-brand-orange transition">${product.title}</h4>
                                     <div class="mt-2">
                                         <div class="flex items-center gap-2 mb-2">
                                             <p class="text-brand-orange font-black text-sm md:text-base">৳ ${product.price}</p>
                                             ${product.oldPrice ? `<p class="text-gray-400 text-xs line-through">৳ ${product.oldPrice}</p>` : ''}
                                         </div>
-                                        <button onclick="addToCart(${product.id})" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
+                                        <button onclick="addToCart('${product.id}')" class="w-full bg-brand-dark hover:bg-brand-orange text-white text-xs py-2 rounded-xl font-bold transition flex items-center justify-center gap-1.5 shadow-sm">
                                             <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
                                         </button>
                                     </div>
@@ -853,7 +911,7 @@
 
         function openProductDetails(id) {
             const allProds = getAllProducts();
-            const prod = allProds.find(p => p.id === id);
+            const prod = allProds.find(p => p.id == id);
             if(!prod) return;
 
             let validImgs = prod.images.filter(img => img && img.trim() !== "");
@@ -880,7 +938,7 @@
                         </div>
                         <p class="text-xs text-gray-600 leading-relaxed mt-2 whitespace-pre-line">${prod.description || 'কোনো বিবরণ দেওয়া হয়নি।'}</p>
                     </div>
-                    <button onclick="addToCart(${prod.id}); closeProductDetailsModal();" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <button onclick="addToCart('${prod.id}'); closeProductDetailsModal();" class="w-full bg-gradient-to-r from-brand-orange to-amber-500 text-white py-3.5 rounded-xl font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-cart-plus"></i> কার্টে যোগ করুন
                     </button>
                 </div>
@@ -900,7 +958,7 @@
         
         function addToCart(id) {
             const allProds = getAllProducts();
-            const item = allProds.find(p => p.id === id);
+            const item = allProds.find(p => p.id == id);
             if(item) { cart.push(item); updateCart(); toggleCart(); }
         }
 
@@ -1020,8 +1078,8 @@
                                     `💰 *সর্বমোট বিল:* ৳${grandTotal}%0A%0A` +
                                     `👤 *কাস্টমারের নাম:* ${name}%0A` +
                                     `📞 *ফোন নাম্বার:* ${phone}%0A` +
-                                    `📍 *জেলা:* ঠিকানার তথ্য... (${district})%0A` +
-                                    `🏠 *সম্পূর্ণ ঠিকানা:* ঠিকানাসমূহ...%0A` +
+                                    `📍 *জেলা:* ${district}%0A` +
+                                    `🏠 *সম্পূর্ণ ঠিকানা:* ${address}%0A` +
                                     `💳 *পেমেন্ট পদ্ধতি:* ${paymentMethod}%0A%0A` +
                                     `দয়া করে অর্ডারটি কনফার্ম করুন।`;
 
